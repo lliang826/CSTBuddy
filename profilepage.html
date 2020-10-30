@@ -5,6 +5,30 @@
         <title>My BCIT Project</title>
         <meta name="comp1800 boilerplate code" content="my bcit project">
         <meta name="author" content="BCIT">
+
+        <style>
+
+            .buttonContainer {
+                max-width: 75%;
+                display: grid;
+                grid-template-columns: auto;
+                grid-template-rows: auto auto auto;
+                transform: translate(20%);
+                margin-top: 20%;
+                grid-row-gap: 25%;
+            }
+
+            .dropdown { 
+                position: static !important; 
+            } 
+          
+            .dropdown-menu { 
+                box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15)!important; 
+                margin-top: 0px !important; 
+                width: 100% !important; 
+            } 
+
+        </style>
     
         <!-- Bootstrap for Mobile-first, and JQuery -->
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -48,14 +72,36 @@
           </nav>
 
         <!-- Default dropright button -->
-        <div class="btn-group dropright">
-            <button type="button" class="btn btn-secondary btn-lg dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-             Dropright
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <button class="dropdown-item active" type="button">Action</button>
-                <button class="dropdown-item" type="button">Another action</button>
-                <button class="dropdown-item" type="button">Something else here</button>
+        <div class="buttonContainer">
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary btn-lg btn-block dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                Dropright
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item active" type="button">Action</button>
+                    <button class="dropdown-item" type="button">Another action</button>
+                    <button class="dropdown-item" type="button">Something else here</button>
+                </div>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary btn-lg btn-block dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                Dropright
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item active" type="button">Action</button>
+                    <button class="dropdown-item" type="button">Another action</button>
+                    <button class="dropdown-item" type="button">Something else here</button>
+                </div>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-secondary btn-lg btn-block dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                Dropright
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item active" type="button">Action</button>
+                    <button class="dropdown-item" type="button">Another action</button>
+                    <button class="dropdown-item" type="button">Something else here</button>
+                </div>
             </div>
         </div>
     </body>
