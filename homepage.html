@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <style>
+        body {
+            font: 15px arial, sans-serif;
+            background-color: #d9d9d9;
+            /*padding-top: 15px; */
+            padding-bottom: 15px;
+        }
+
+        #bodybox {
+            margin: auto;
+            max-width: 550px;
+            font: 15px arial, sans-serif;
+            background-color: white;
+            border-style: solid;
+            border-width: 1px;
+            padding-top: 20px;
+            padding-bottom: 25px;
+            padding-right: 25px;
+            padding-left: 25px;
+            box-shadow: 5px 5px 5px grey;
+            border-radius: 15px;
+        }
+
+        #chatborder {
+            border-style: solid;
+            background-color: #f6f9f6;
+            border-width: 3px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+            padding-top: 10px;
+            padding-bottom: 15px;
+            padding-right: 20px;
+            padding-left: 15px;
+            border-radius: 15px;
+        }
+
+        .chatlog {
+            font: 15px arial, sans-serif;
+        }
+
+        #chatbox {
+            font: 17px arial, sans-serif;
+            height: 22px;
+            width: 100%;
+        }
+
+        h1 {
+            margin: auto;
+        }
+
+        pre {
+            background-color: #f0f0f0;
+            margin-left: 20px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+    </style>
+
+
+    <!-- Bootstrap for Mobile-first, and JQuery -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
+        integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous">
+        </script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <!-- Added in a responsive Nav bar and updated the "Active" page-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">CST Buddy</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Chat Bot</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">My Profile <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <!-- Cards -->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <div class="card" style="width: 18rem;">
+                    <img src="Chatbot.PNG" class="card-img-top" alt="Chatbot">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Insert something here.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm">
+                <div class="card" style="width: 18rem;">
+                    <img src="Chatbot.PNG" class="card-img-top" alt="Chatbot">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Insert something here.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm">
+                <div class="card" style="width: 18rem;">
+                    <img src="Chatbot.PNG" class="card-img-top" alt="Chatbot">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Insert something here.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <br>
+    <br>
+
+    <!-- Chat -->
+    <div id='bodybox'>
+        <h2>CST Buddy</h2>
+        <div id='chatborder'>
+            <p id="chatlog7" class="chatlog">&nbsp;</p>
+            <p id="chatlog6" class="chatlog">&nbsp;</p>
+            <p id="chatlog5" class="chatlog">&nbsp;</p>
+            <p id="chatlog4" class="chatlog">&nbsp;</p>
+            <p id="chatlog3" class="chatlog">&nbsp;</p>
+            <p id="chatlog2" class="chatlog">&nbsp;</p>
+            <p id="chatlog1" class="chatlog">&nbsp;</p>
+            <input type="text" name="chat" id="chatbox" placeholder="Hi there! Type &quot;Hello&quot; to talk to me."
+                onfocus="placeHolder()">
+        </div>
+
+
+        <!--
+        <br>
+        <br>
+        <h2>Build a Chatbot</h2>
+        <p>Write a program that responds to the user's text input.</p>
+        <ul style="list-style-type:disc">
+            <li>Input strings of text from the user.</li>
+            <li>Output different strings of text in response.</li>
+            <li>Here is my attempt: <a href="https://codepen.io/lilgreenland/pen/zqXLeJ">notbot</a>
+        </ul>
+        <br>
+        <h3>
+            <p>How to Use This Template!</p>
+        </h3>
+        <p>Fork this template!</p>
+        <p>The template has several functions that allow you to focus on programming the chatbot's behavoir. It will
+            read in the user's strings from the input box. It will keep a record of every message and display the last
+            few messages above the input box.</p>
+        <p>To control what the chatbot will say make changes to the javascript function <b>chatbotResponse()</b> . You
+            can also change the HTML or CSS. There is no need to keep these directions.</p>
+        <p>The variable <b>lastUserMessage</b> is a string that records the last thing typed.</p>
+        <p>The variable <b>botMessage</b> is a string that controls what the chatbot will say.</p>
+        <p>Example:</p>
+        <pre><code>if (lastUserMessage === 'hi'){
+        botMessage = 'Howdy!';
+      }</pre></code>
+        <pre><code>if (lastUserMessage === 'what is your name'){
+        botMessage = 'My name is' + botName;
+      }</pre></code>
+
+
+        <br>
+        <br>
+        <h3>
+            <p>Ideas</p>
+        </h3>
+        <p>Narrow the range of topics the chatbot responds to, like an adventure time chatbot.</p>
+        <p>Customize the html and CSS to fit your theme.</p>
+        <p>If you only have a few responses, tell the user what commands work.</p>
+        <p>Use a <a href="https://www.w3schools.com/js/js_switch.asp">switch statement</a> to simplify a large number of
+            if else branches.</p>
+
+        <br>
+        <br>
+        <h3>
+            <p>Advanced Ideas</p>
+        </h3>
+        <p>Use the <a href="https://www.w3schools.com/jsref/jsref_tolowercase.asp">.tolowercase()</a> command to ignore
+            capitalization.</p>
+        <p>Make variables to keep track of what's been said. Use those variables in an If stement to produce a new set
+            of responses.</p>
+
+        <p>Respond to the users by using what they said. For example:</p>
+        <pre><b>User:</b> I like puppies
+      <b>Chatbot:</b> Tell me more about puppies.</pre>
+
+        <p>Use the <a href="https://www.w3schools.com/jsref/jsref_obj_date.asp">date</a> function to answer questions
+            like "what time is it?".</p>
+        <p>Quizbot?</p>
+        <p>Calculator Mathbot?</p>
+        <p>Canvas drawbot!</p>
+        <p>Write a text adventure game. Like <a href="http://www.web-adventures.org/">these</a>.</p>
+        <p>Build an array with several similar responses and have the chatbot pick one at random, like this:
+        <pre><code>var hi = ['hi','howdy','hello','hey'];
+      botMessage = hi[Math.floor(Math.random()*(hi.length))];</pre></code></p>
+        <p>Use <a href="https://www.w3schools.com/js/js_regexp.asp">regular expressions</a> for powerful searches. Here
+            is my <a href="https://codepen.io/lilgreenland/pen/YGENqK?editors=0010">example</a></p>
+
+        <p>Regular expressions can search in a way similar to a google search. This example searches for words that are
+            cat-like. It also ignores capitalization and looks for the words preceded and followed by spaces.</p>
+        <pre><code>var n = lastUserMessage.search(/\b(cat|cats|kitten|feline)\b/i);
+      if (n !== -1) {
+        botMessage = 'I hate cats!';
+      } </pre></code>
+
+        <p>Here is an example that looks for ways to say dog as singular or plural. It then repeats back the dog related
+            word to the user.</p>
+        <pre><code>var patt = /\b(dogs?|pup(s|py|pies?)?|canines?)\b/i;
+      var result = patt.exec(lastUserMessage);
+      if (result) {
+        botMessage = 'I love ' + result[0];
+      } </pre></code>
+        <br>
+        <br>
+        <h3>
+            <p>Links:</p>
+        </h3>
+        <ul style="list-style-type:disc">
+            <li><a href="https://www.w3schools.com/js/js_strings.asp">tutorial on strings</a></li>
+            <li><a href="https://www.w3schools.com/js/js_string_methods.asp">string methods</a></li>
+            <li><a href="https://www.w3schools.com/jsref/jsref_obj_string.asp">string reference</a></li>
+            <li><a href="https://www.w3schools.com/js/js_regexp.asp">regular expressions tutorial</a></li>
+            <li><a href="https://www.w3schools.com/jsref/jsref_obj_regexp.asp">W3 schools regular expressions
+                    reference</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions">MDN regular
+                    expressions reference</a></li>
+            <li><a href="http://regexr.com/">Testing your regular expressions</a></li>
+        </ul>
+        <center><img src="https://lilgreenland.github.io/images/BMO.jpg" align="middle"></center>
+    </div>
+
+-->
+
+
+    <script>
+        //links
+        //http://eloquentjavascript.net/09_regexp.html
+        //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
+
+
+        var messages = [], //array that hold the record of each string in chat
+            lastUserMessage = "", //keeps track of the most recent input string from the user
+            botMessage = "", //var keeps track of what the chatbot is going to say
+            botName = 'Chatbot', //name of the chatbot
+            talking = true; //when false the speach function doesn't work
+        //
+        //
+        //****************************************************************
+        //****************************************************************
+        //****************************************************************
+        //****************************************************************
+        //****************************************************************
+        //****************************************************************
+        //****************************************************************
+        //edit this function to change what the chatbot says
+        function chatbotResponse() {
+            talking = true;
+            botMessage = "I'm confused"; //the default message
+
+            if (lastUserMessage === 'Hello' || lastUserMessage == 'hello') {
+                botMessage = "Welcome to CST Buddy! How may I help you today? " 
+                    + "To get started, type &quot;Recent Pages&quot; or &quot;Top Visited Pages&quot;. "
+                    + "You can also ask me any question you'd like!";
+            }
+
+            if (lastUserMessage === 'coop' || lastUserMessage == "co-op") {
+                botMessage = "To find out more about the BCIT CST co-op program, visit: "
+                    + "https://www.bcit.ca/workplace-education/co-op/programs/computer-information-computer-systems-technology/ .";
+            }
+        }
+        //****************************************************************
+        //****************************************************************
+        //****************************************************************
+        //****************************************************************
+        //****************************************************************
+        //****************************************************************
+        //****************************************************************
+        //
+        //
+        //
+        //this runs each time enter is pressed.
+        //It controls the overall input and output
+        function newEntry() {
+            //if the message from the user isn't empty then run 
+            if (document.getElementById("chatbox").value != "") {
+                //pulls the value from the chatbox ands sets it to lastUserMessage
+                lastUserMessage = document.getElementById("chatbox").value;
+                //sets the chat box to be clear
+                document.getElementById("chatbox").value = "";
+                //adds the value of the chatbox to the array messages
+                messages.push(lastUserMessage);
+                //Speech(lastUserMessage);  //says what the user typed outloud
+                //sets the variable botMessage in response to lastUserMessage
+                chatbotResponse();
+                //add the chatbot's name and message to the array messages
+                messages.push("<b>" + botName + ":</b> " + botMessage);
+                // says the message using the text to speech function written below
+                Speech(botMessage);
+                //outputs the last few array elements of messages to html
+                for (var i = 1; i < 8; i++) {
+                    if (messages[messages.length - i])
+                        document.getElementById("chatlog" + i).innerHTML = messages[messages.length - i];
+                }
+            }
+        }
+
+        //text to Speech
+        //https://developers.google.com/web/updates/2014/01/Web-apps-that-talk-Introduction-to-the-Speech-Synthesis-API
+        function Speech(say) {
+            if ('speechSynthesis' in window && talking) {
+                var utterance = new SpeechSynthesisUtterance(say);
+                //msg.voice = voices[10]; // Note: some voices don't support altering params
+                //msg.voiceURI = 'native';
+                //utterance.volume = 1; // 0 to 1
+                //utterance.rate = 0.1; // 0.1 to 10
+                //utterance.pitch = 1; //0 to 2
+                //utterance.text = 'Hello World';
+                //utterance.lang = 'en-US';
+                speechSynthesis.speak(utterance);
+            }
+        }
+
+        //runs the keypress() function when a key is pressed
+        document.onkeypress = keyPress;
+        //if the key pressed is 'enter' runs the function newEntry()
+        function keyPress(e) {
+            var x = e || window.event;
+            var key = (x.keyCode || x.which);
+            if (key == 13 || key == 3) {
+                //runs this function when enter is pressed
+                newEntry();
+            }
+            if (key == 38) {
+                console.log('hi')
+                //document.getElementById("chatbox").value = lastUserMessage;
+            }
+        }
+
+        //clears the placeholder text ion the chatbox
+        //this function is set to run when the users brings focus to the chatbox, by clicking on it
+        function placeHolder() {
+            document.getElementById("chatbox").placeholder = "";
+        }
+    </script>
+
+
+</body>
+
+</html>
