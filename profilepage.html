@@ -91,21 +91,11 @@
         <div class="buttonContainer">
             <div class="btn-group">
                 <button type="button" class="btn btn-secondary btn-lg btn-block dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-                Campus : (Current Selection)
+                Campus : 
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <button class="dropdown-item active" type="button">Burnaby</button>
+                    <button class="dropdown-item" type="button">Burnaby</button>
                     <button class="dropdown-item" type="button">Downtown</button>
-                </div>
-            </div>
-            <div class="btn-group">
-                <button type="button" class="btn btn-secondary btn-lg btn-block dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-                Program : (Current Selection)
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <button class="dropdown-item active" type="button">CST</button>
-                    <button class="dropdown-item" type="button">CIT</button>
-                    <button class="dropdown-item" type="button">FSWD</button>
                 </div>
             </div>
             <div class="btn-group">
@@ -113,12 +103,29 @@
                 Level : (Current Selection)
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <button class="dropdown-item active" type="button">1</button>
+                    <button class="dropdown-item" type="button">1</button>
                     <button class="dropdown-item" type="button">2</button>
                     <button class="dropdown-item" type="button">3</button>
                     <button class="dropdown-item" type="button">4</button>
                 </div>
             </div>
         </div>
+
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-analytics.js"></script>
+
+        <!-- Your own Firebase API key information -->
+        <script src="scripts/firebase_api.js"> </script>
+
+        <!-- Your own JavaScript functions included here    -->
+        <script src="scripts/appScripts.js"> </script>
     </body>
 </html>
