@@ -1,4 +1,4 @@
-var campusHeaderButton = $('button:contains("Campus")');
+            var campusHeaderButton = $('button:contains("Campus")');
             var campusBurnabyButton = $('button:contains("Burnaby")');
             var campusDowntownButton = $('button:contains("Downtown")');
             var levelHeaderButton = $('button:contains("Level")');
@@ -16,14 +16,16 @@ var campusHeaderButton = $('button:contains("Campus")');
                 else {
                     campusBurnabyButton.addClass('active');
                 }
-                
-               // db.auth().currentUser.updateProfile({
-               //     Campus: "Burnaby"
-               // });
-
-                
 
             });
+
+            function updateCampus() {
+                db.collection("users").doc(user.uid).update({
+                    campus: "Burnaby"
+                });
+            };
+
+            updateCampus();
 
             campusDowntownButton.click(function() {
 
