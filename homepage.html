@@ -331,8 +331,9 @@
 
                 readURL();
                 botMessage = "To find out more about CST co-op " + newURL;*/
-                botMessage = "To find out more about the BCIT CST co-op program, visit: "
-                    + "https://www.bcit.ca/workplace-education/co-op/programs/computer-information-computer-systems-technology/ .";
+
+                var str = "To find out more about the BCIT CST co-op program, click here!";
+                botMessage = str.link("https://www.bcit.ca/workplace-education/co-op/programs/computer-information-computer-systems-technology/");
             }
         }
         //****************************************************************
