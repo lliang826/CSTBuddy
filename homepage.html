@@ -100,7 +100,7 @@
                     <a class="nav-link" href="#">Chat Bot</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">My Profile <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="profilepage.html">My Profile <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -272,17 +272,33 @@
 -->
 
 
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-analytics.js"></script>
+
+    <!-- Your own Firebase API key information -->
+    <script src="scripts/firebase_api.js"> </script>
+
+    <!-- Your own JavaScript functions included here    -->
+    <script src="scripts/appScripts.js"> </script>
+
     <script>
         //links
         //http://eloquentjavascript.net/09_regexp.html
         //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
 
-
+        //var newURL = "";
         var messages = [], //array that hold the record of each string in chat
             lastUserMessage = "", //keeps track of the most recent input string from the user
             botMessage = "", //var keeps track of what the chatbot is going to say
             botName = 'Chatbot', //name of the chatbot
-            talking = true; //when false the speach function doesn't work
+            talking = false; //when false the speach function doesn't work
         //
         //
         //****************************************************************
@@ -294,7 +310,7 @@
         //****************************************************************
         //edit this function to change what the chatbot says
         function chatbotResponse() {
-            talking = true;
+            talking = false;
             botMessage = "I'm confused"; //the default message
 
             if (lastUserMessage === 'Hello' || lastUserMessage == 'hello') {
@@ -304,6 +320,17 @@
             }
 
             if (lastUserMessage === 'coop' || lastUserMessage == "co-op") {
+                /*function readURL(){
+                    db.collection("resources").doc("page1")
+                    .onSnapshot(function(snap){
+                        console.log(snap.data());   //print the document fields of "01"
+                        console.log(snap.data().URL);
+                        newURL = snap.data().message;
+                    })
+                }
+
+                readURL();
+                botMessage = "To find out more about CST co-op " + newURL;*/
                 botMessage = "To find out more about the BCIT CST co-op program, visit: "
                     + "https://www.bcit.ca/workplace-education/co-op/programs/computer-information-computer-systems-technology/ .";
             }

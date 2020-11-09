@@ -19,14 +19,43 @@
 
             });
 
-            function updateCampus() {
-                db.collection("users").doc(user.uid).update({
-                    campus: "Burnaby"
-                });
-            };
+            ///////////////////////////////////////////////
+            //This should update user profile but doesnt
+            ///////////////////////////////////////////////
+            /*firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                    console.log("user logged in");
+                    if (campusBurnabyButton.hasClass('active')) {
+                        user.updateProfile({
+                            campus: "Burnaby"
+                        }).then(function() {
+                            console.log("update success");
+                          }).catch(function(error) {
+                            console.log("update failed" + error);
+                          });
+                    } else {
+                        user.updateProfile({
+                            campus: "Downtown"
+                        });
+                    }
+                }
+            });*/
+            
+            /*
+            var user = firebase.auth().currentUser;
 
-            updateCampus();
+            function printUserEmail(){
+                db.collection("users").doc(user).onSnapshot(function(snap){
+                    console.log(snap.data());
+                    console.log(snap.data().email);
+                    document.getElementById("currentUserEmail").innerText = snap.data().email;
+                })
+            }
 
+            printUserEmail();
+            */
+
+            ///////////////////////////////////////
             campusDowntownButton.click(function() {
 
                 if (campusBurnabyButton.hasClass('active')) {
