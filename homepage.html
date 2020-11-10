@@ -41,6 +41,8 @@
             padding-right: 20px;
             padding-left: 15px;
             border-radius: 15px;
+            overflow: scroll;
+            height: 300px;
         }
 
         .chatlog {
@@ -163,11 +165,13 @@
             <p id="chatlog3" class="chatlog">&nbsp;</p>
             <p id="chatlog2" class="chatlog">&nbsp;</p>
             <p id="chatlog1" class="chatlog">&nbsp;</p>
-            <input type="text" name="chat" id="chatbox" placeholder="Hi there! Type &quot;Hello&quot; to talk to me."
-                onfocus="placeHolder()">
         </div>
 
 
+        <div>
+            <input type="text" name="chat" id="chatbox" placeholder="Hi there! Type &quot;Hello&quot; to talk to me."
+                onfocus="placeHolder()">
+        </div>
         <!--
         <br>
         <br>
@@ -333,7 +337,16 @@
                 botMessage = "To find out more about CST co-op " + newURL;*/
 
                 var str = "To find out more about the BCIT CST co-op program, click here!";
-                botMessage = str.link("https://www.bcit.ca/workplace-education/co-op/programs/computer-information-computer-systems-technology/");
+                var str2 = " Please right click and open this in a new tab.<br><br>Did you find what you were looking for? (Y/N)";
+                botMessage = str.link("https://www.bcit.ca/workplace-education/co-op/programs/computer-information-computer-systems-technology/") + str2;
+            }
+
+            if (lastUserMessage === "Y") {
+                botMessage = "Thank-you for your feedback! We're glad you enjoyed using the chatbot. Have a nice day!";
+            }
+
+            if (lastUserMessage === "N") {
+                botMessage = "Sorry about that. Could you tell us a bit more about why you didn't it?";
             }
         }
         //****************************************************************
