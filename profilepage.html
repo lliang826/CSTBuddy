@@ -18,11 +18,11 @@
         <style>
 
             .buttonContainer {
-                max-width: 75%;
+                max-width: 50%;
+                margin: auto;
                 display: grid;
                 grid-template-columns: auto;
                 grid-template-rows: auto auto auto;
-                transform: translate(20%);
                 margin-top: 15%;
                 grid-row-gap: 25%;
             }
@@ -48,6 +48,11 @@
             .btn {
                 background-color: darkblue;
                 color: yellow;
+            }
+
+            .btn-primary {
+                width: 20%;
+                justify-self: right;
             }
 
         </style>
@@ -109,6 +114,7 @@
                     <button class="dropdown-item" type="button">4</button>
                 </div>
             </div>
+            <button class="btn btn-primary" type="submit">Submit</button>
         </div>
 
         <!-- The core Firebase JS SDK is always required and must be listed first -->
