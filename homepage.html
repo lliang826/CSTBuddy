@@ -41,7 +41,7 @@
             padding-right: 20px;
             padding-left: 15px;
             border-radius: 15px;
-            overflow: scroll;
+            overflow: auto;
             height: 300px;
         }
 
@@ -66,19 +66,6 @@
 
         h2 {
             text-align: center;
-        }
-
-        
-        #chatButton1 {
-            
-            margin-bottom: 2px;
-            margin-left: 10px;
-        }
-
-        #chatButton2 {
-            
-            margin-bottom: 2px;
-            margin-left: 10px;
         }
         
     </style>
@@ -172,20 +159,12 @@
     <div id='bodybox'>
         <h2>CST Buddy</h2>
         <div id='chatborder'>
-            <p id="chatlog7" class="chatlog">&nbsp;</p>
-            <p id="chatlog6" class="chatlog">&nbsp;</p>
-            <p id="chatlog5" class="chatlog">&nbsp;</p>
-            <p id="chatlog4" class="chatlog">&nbsp;</p>
-            <p id="chatlog3" class="chatlog">&nbsp;</p>
-            <p id="chatlog2" class="chatlog">&nbsp;</p>
-            <p id="chatlog1" class="chatlog">&nbsp;</p>
             
         </div>
-        <input type="text" name="chat" id="chatbox" placeholder="Hi there! Type &quot;Hello&quot; to talk to me."
+            <input type="text" name="chat" id="chatbox" placeholder="Hi there! Type &quot;Hello&quot; to talk to me."
                 onfocus="placeHolder()">
-        <input type="button" id="chatButton1" value="Yes">
-        <input type="button" id="chatButton2" value="No">
     </div>
+
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
@@ -204,15 +183,12 @@
     <script src="scripts/appScripts.js"> </script>
 
     <script>
-        var messages = [], //array that hold the record of each string in chat
-            lastUserMessage = "", //keeps track of the most recent input string from the user
+        var lastUserMessage = "", //keeps track of the most recent input string from the user
             botMessage = "", //var keeps track of what the chatbot is going to say
-            botName = 'Chatbot', //name of the chatbot
-            talking = false; //when false the speach function doesn't work
+            botName = 'CST Buddy'; //name of the chatbot
         
         //edit this function to change what the chatbot says
         function chatbotResponse() {
-            talking = false;
             botMessage = "I'm confused"; //the default message
 
             if (lastUserMessage === 'Hello' || lastUserMessage == 'hello') {
@@ -222,31 +198,30 @@
             }
 
             if (lastUserMessage === 'coop' || lastUserMessage == "co-op") {
-                var str = "To find out <br> more about the BCIT CST co-op program, click here!";
-                botMessage = str.link("https://www.bcit.ca/workplace-education/co-op/programs/computer-information-computer-systems-technology/");
+                var str = "<a href='https://www.bcit.ca/workplace-education/co-op/programs/computer-information-computer-systems-technology/' target='_blank'>To find out more about the BCIT CST co-op program, click here!</a>";
+                var str2 = " Please right click and open this in a new tab. \n Did you find what you were looking for? (Y/N)";
+                botMessage = str + str2;
+            }
+
+            if (lastUserMessage === "Y") {
+                botMessage = "Thank-you for your feedback! We're glad you enjoyed using the chatbot. Have a nice day!";
+            }
+
+            if (lastUserMessage === "N") {
+                botMessage = "Sorry about that. Could you tell us a bit more about why you didn't it?";
             }
         }
 
-
-
-
-
-
-
-
-        //****************************************************************
-        //****************************************************************
-        //****************************************************************
-        //****************************************************************
-        //****************************************************************
-        //****************************************************************
-        //****************************************************************
-        //
-        //
-        //
         //this runs each time enter is pressed.
         //It controls the overall input and output
         function newEntry() {
+            const chatBox = document.getElementById("chatborder");
+            let userMessage = document.createElement("p");
+            let newBotMessage = document.createElement("p");
+            userMessage.className = "chatlog";
+            botMessage.className = "chatlog";
+            var yesButton = document.createElement("button");
+            var noButton = document.createElement("button");
             //if the message from the user isn't empty then run 
             if (document.getElementById("chatbox").value != "") {
                 //pulls the value from the chatbox ands sets it to lastUserMessage
@@ -254,50 +229,17 @@
                 //sets the chat box to be clear
                 document.getElementById("chatbox").value = "";
                 //adds the value of the chatbox to the array messages
-                messages.push(lastUserMessage);
-                //Speech(lastUserMessage);  //says what the user typed outloud
+                userMessage.innerText = lastUserMessage;
                 //sets the variable botMessage in response to lastUserMessage
                 chatbotResponse();
                 //add the chatbot's name and message to the array messages
-                messages.push("<b>" + botName + ":</b> " + botMessage);
-                // says the message using the text to speech function written below
-                Speech(botMessage);
-                //outputs the last few array elements of messages to html
-                for (var i = 1; i < 8; i++) {
-                    if (messages[messages.length - i])
-                        document.getElementById("chatlog" + i).innerHTML = messages[messages.length - i];
-                }
+                newBotMessage.innerHTML = botMessage;
+                chatBox.append(userMessage);
+                chatBox.append(newBotMessage);
+                chatBox.scrollTop = chatBox.scrollHeight - chatBox.clientHeight;
             }
         }
-        ///////////////////////////////////////////////////////////////////////////////////////////////
-        ///////////////////////////////////////////////////////////////////////////////////////////////
-        ///////////////////////////////////////////////////////////////////////////////////////////////
-        function feedback() {
-            if (lastUserMessage == "coop") {
-                console.log("coop");
-                document.getElementById("chatButton1").style.removeProperty('display');
-            }
-        }
-        ///////////////////////////////////////////////////////////////////////////////////////////////
-        ///////////////////////////////////////////////////////////////////////////////////////////////
-        ///////////////////////////////////////////////////////////////////////////////////////////////
-
-        //text to Speech
-        //https://developers.google.com/web/updates/2014/01/Web-apps-that-talk-Introduction-to-the-Speech-Synthesis-API
-        function Speech(say) {
-            if ('speechSynthesis' in window && talking) {
-                var utterance = new SpeechSynthesisUtterance(say);
-                //msg.voice = voices[10]; // Note: some voices don't support altering params
-                //msg.voiceURI = 'native';
-                //utterance.volume = 1; // 0 to 1
-                //utterance.rate = 0.1; // 0.1 to 10
-                //utterance.pitch = 1; //0 to 2
-                //utterance.text = 'Hello World';
-                //utterance.lang = 'en-US';
-                speechSynthesis.speak(utterance);
-            }
-        }
-
+ 
         //runs the keypress() function when a key is pressed
         document.onkeypress = keyPress;
         //if the key pressed is 'enter' runs the function newEntry()
@@ -307,7 +249,6 @@
             if (key == 13 || key == 3) {
                 //runs this function when enter is pressed
                 newEntry();
-                feedback();
             }
             if (key == 38) {
                 console.log('hi')
