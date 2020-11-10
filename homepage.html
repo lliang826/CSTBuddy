@@ -41,6 +41,8 @@
             padding-right: 20px;
             padding-left: 15px;
             border-radius: 15px;
+            overflow: scroll;
+            height: 300px;
         }
 
         .chatlog {
@@ -65,6 +67,20 @@
         h2 {
             text-align: center;
         }
+
+        
+        #chatButton1 {
+            
+            margin-bottom: 2px;
+            margin-left: 10px;
+        }
+
+        #chatButton2 {
+            
+            margin-bottom: 2px;
+            margin-left: 10px;
+        }
+        
     </style>
 
 
@@ -163,19 +179,13 @@
             <p id="chatlog3" class="chatlog">&nbsp;</p>
             <p id="chatlog2" class="chatlog">&nbsp;</p>
             <p id="chatlog1" class="chatlog">&nbsp;</p>
-            <input type="text" name="chat" id="chatbox" placeholder="Hi there! Type &quot;Hello&quot; to talk to me."
-                onfocus="placeHolder()">
+            
         </div>
-
-
-        
-
-
-
-
-
-
-
+        <input type="text" name="chat" id="chatbox" placeholder="Hi there! Type &quot;Hello&quot; to talk to me."
+                onfocus="placeHolder()">
+        <input type="button" id="chatButton1" value="Yes">
+        <input type="button" id="chatButton2" value="No">
+    </div>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
@@ -194,8 +204,6 @@
     <script src="scripts/appScripts.js"> </script>
 
     <script>
-
-        //var newURL = "";
         var messages = [], //array that hold the record of each string in chat
             lastUserMessage = "", //keeps track of the most recent input string from the user
             botMessage = "", //var keeps track of what the chatbot is going to say
@@ -214,18 +222,7 @@
             }
 
             if (lastUserMessage === 'coop' || lastUserMessage == "co-op") {
-                /*function readURL(){
-                    db.collection("resources").doc("page1")
-                    .onSnapshot(function(snap){
-                        console.log(snap.data());   //print the document fields of "01"
-                        console.log(snap.data().URL);
-                        newURL = snap.data().message;
-                    })
-                }
-
-                readURL();
-                botMessage = "To find out more about CST co-op " + newURL;*/
-                var str = "To find out more about the BCIT CST co-op program, click here!";
+                var str = "To find out <br> more about the BCIT CST co-op program, click here!";
                 botMessage = str.link("https://www.bcit.ca/workplace-education/co-op/programs/computer-information-computer-systems-technology/");
             }
         }
@@ -272,6 +269,18 @@
                 }
             }
         }
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        function feedback() {
+            if (lastUserMessage == "coop") {
+                console.log("coop");
+                document.getElementById("chatButton1").style.removeProperty('display');
+            }
+        }
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////
 
         //text to Speech
         //https://developers.google.com/web/updates/2014/01/Web-apps-that-talk-Introduction-to-the-Speech-Synthesis-API
@@ -298,6 +307,7 @@
             if (key == 13 || key == 3) {
                 //runs this function when enter is pressed
                 newEntry();
+                feedback();
             }
             if (key == 38) {
                 console.log('hi')
