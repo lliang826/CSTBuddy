@@ -16,30 +16,39 @@
                 else {
                     campusBurnabyButton.addClass('active');
                 }
-
+                $(campusHeaderButton).html("Campus : Burnaby");
             });
 
-            ///////////////////////////////////////////////
-            //This should update user profile but doesnt
-            ///////////////////////////////////////////////
-            /*firebase.auth().onAuthStateChanged(function(user) {
-                if (user) {
-                    console.log("user logged in");
-                    if (campusBurnabyButton.hasClass('active')) {
-                        user.updateProfile({
-                            campus: "Burnaby"
-                        }).then(function() {
-                            console.log("update success");
-                          }).catch(function(error) {
-                            console.log("update failed" + error);
-                          });
-                    } else {
-                        user.updateProfile({
-                            campus: "Downtown"
-                        });
-                    }
+            
+            var submit = $('button:contains("Submit")');
+            submit.click(function() {
+                var currentCampus = "";
+                if (campusBurnabyButton.hasClass('active')) {
+                    currentCampus = "Burnaby";
+                } else if (campusDowntownButton.hasClass('active')) {
+                    currentCampus = "Downtown";
                 }
-            });*/
+                var currentLevel = 0;
+                if (level1Button.hasClass('active')) {
+                    currentLevel = 1;
+                } else if (level2Button.hasClass('active')) {
+                    currentLevel = 2;
+                } else if (level3Button.hasClass('active')) {
+                    currentLevel = 3;
+                } else if (level4Button.hasClass('active')) {
+                    currentLevel = 4;
+                }
+                console.log(currentCampus);
+                console.log(currentLevel);
+
+                firebase.auth().onAuthStateChanged(function (user) {
+                    db.collection("users").doc(user.uid).update({
+                        campus : currentCampus,
+                        level : currentLevel
+                        })
+                    })
+                });
+            
             
             /*
             var user = firebase.auth().currentUser;

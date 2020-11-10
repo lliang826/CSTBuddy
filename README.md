@@ -34,9 +34,11 @@ It has the following subfolders and files:
 Firebase hosting files: 
 ├── .firebaserc...
 
+
+## Chat Bot Information
 //links
-        //http://eloquentjavascript.net/09_regexp.html
-        //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
+//http://eloquentjavascript.net/09_regexp.html
+//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
 
         <!--
         <br>
