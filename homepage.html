@@ -185,7 +185,17 @@
     <script>
         var lastUserMessage = "", //keeps track of the most recent input string from the user
             botMessage = "", //var keeps track of what the chatbot is going to say
-            botName = 'CST Buddy'; //name of the chatbot
+            botName = 'CST Buddy', //name of the chatbot
+            resourceType = "";
+        
+            var yesButton = document.createElement("button");
+            var noButton = document.createElement("button");
+            yesButton.textContent = 'Yes!';
+            yesButton.className = 'btn btn-primary';
+            noButton.textContent = 'Not really';
+            noButton.className = 'btn btn-primary';
+
+            const chatBox = document.getElementById("chatborder");
         
         //edit this function to change what the chatbot says
         function chatbotResponse() {
@@ -201,6 +211,7 @@
                 var str = "<a href='https://www.bcit.ca/workplace-education/co-op/programs/computer-information-computer-systems-technology/' target='_blank'>To find out more about the BCIT CST co-op program, click here!</a>";
                 var str2 = " Please right click and open this in a new tab. \n Did you find what you were looking for? (Y/N)";
                 botMessage = str + str2;
+                resourceType = "coop";
             }
 
             if (lastUserMessage === "Y") {
@@ -215,18 +226,11 @@
         //this runs each time enter is pressed.
         //It controls the overall input and output
         function newEntry() {
-            const chatBox = document.getElementById("chatborder");
             let userMessage = document.createElement("p");
             let newBotMessage = document.createElement("p");
             userMessage.className = "chatlog";
             botMessage.className = "chatlog";
             var linkUsed = false;
-            var yesButton = document.createElement("button");
-            var noButton = document.createElement("button");
-            yesButton.textContent = 'Yes!';
-            yesButton.className = 'btn btn-primary';
-            noButton.textContent = 'Not really';
-            noButton.className = 'btn btn-primary';
             //if the message from the user isn't empty then run 
             if (document.getElementById("chatbox").value != "") {
                 //pulls the value from the chatbox ands sets it to lastUserMessage
@@ -245,17 +249,37 @@
                 linkUsed = linkCheck();
                 if (linkUsed == true) {
                     chatBox.append(yesButton, noButton);
-                    yesButton.click(function() {
-                        //positiveFeedback();
-                        chatBox.remove(yesButton, noButton);
-                    })
-                    noButton.click(function() {
-                        //negativeFeedback();
-                        chatBox.remove(yesButton, noButton);
-                    })
                 }
                 chatBox.scrollTop = chatBox.scrollHeight - chatBox.clientHeight;
             }
+        }
+
+        
+        yesButton.onclick = function() {
+            console.log("did this click");
+                positiveFeedback();
+                yesButton.remove();
+                noButton.remove();
+            };
+
+
+        noButton.onclick = function() {
+                negativeFeedback();
+                chatBox.remove(yesButton, noButton);
+            };
+
+        function positiveFeedback() {
+            console.log("button clicked");
+            console.log(resourceType);
+            db.collection('resources').doc(resourceType).update({
+                likeCount : firebase.firestore.FieldValue.increment(1)
+            })
+        };
+
+        function negativeFeedback() {
+            db.collection('resources').doc(resourceType).update({
+                likeCount : firebase.firestore.FieldValue.increment(-1)
+            })
         }
 
         function linkCheck() {
