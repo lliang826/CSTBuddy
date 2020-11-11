@@ -245,6 +245,14 @@
                 linkUsed = linkCheck();
                 if (linkUsed == true) {
                     chatBox.append(yesButton, noButton);
+                    yesButton.click(function() {
+                        //positiveFeedback();
+                        chatBox.remove(yesButton, noButton);
+                    })
+                    noButton.click(function() {
+                        //negativeFeedback();
+                        chatBox.remove(yesButton, noButton);
+                    })
                 }
                 chatBox.scrollTop = chatBox.scrollHeight - chatBox.clientHeight;
             }
