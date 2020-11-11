@@ -208,6 +208,8 @@
             }
 
             if (lastUserMessage === 'coop' || lastUserMessage == "co-op") {
+                //getURL() -> firebase collection
+                //var x = getURL();
                 var str = "<a href='https://www.bcit.ca/workplace-education/co-op/programs/computer-information-computer-systems-technology/' target='_blank'>To find out more about the BCIT CST co-op program, click here!</a>";
                 var str2 = " Please right click and open this in a new tab. \n Did you find what you were looking for? (Y/N)";
                 botMessage = str + str2;
@@ -265,7 +267,8 @@
 
         noButton.onclick = function() {
                 negativeFeedback();
-                chatBox.remove(yesButton, noButton);
+                yesButton.remove();
+                noButton.remove();
             };
 
         function positiveFeedback() {
