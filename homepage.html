@@ -187,10 +187,8 @@
             botMessage = "", //var keeps track of what the chatbot is going to say
             botName = 'CST Buddy', //name of the chatbot
             resourceType = "";
-            urlHolder = "";
-            var linkUsed = false;
-            var anchor = document.createElement("a");
-            
+            urL = "";
+        
             var yesButton = document.createElement("button");
             var noButton = document.createElement("button");
             yesButton.textContent = 'Yes!';
@@ -211,16 +209,22 @@
             }
 
             if (lastUserMessage === 'coop' || lastUserMessage == "co-op") {
+                //getURL() -> firebase collection
+                //var x = getURL();
+
+                var str3 = "<a href='' target='_blank' id='abc'>Click here to find out more about CST coop.</a>";
+                db.collection("resources").doc("coop").get().then(function(c) {
+                        document.getElementById("abc").href = c.data().url;
+                        console.log(str3);
+                    })
+                
+                botMessage = str3;
                 resourceType = "coop";
-                linkUsed = true;
-                db.collection("resources").doc(resourceType).onSnapshot(function(snap) {
-                    anchor.href = snap.data().url;
-                })
-                anchor.textContent = "This is what to click"
-                
+
+                /*var str = "<a href='https://www.bcit.ca/workplace-education/co-op/programs/computer-information-computer-systems-technology/' target='_blank'>To find out more about the BCIT CST co-op program, click here!</a>";
                 var str2 = " Please right click and open this in a new tab. \n Did you find what you were looking for? (Y/N)";
-                botMessage = anchor;
-                
+                botMessage = str + str2;
+                resourceType = "coop";*/
             }
 
             if (lastUserMessage === "Y") {
@@ -239,6 +243,7 @@
             let newBotMessage = document.createElement("p");
             userMessage.className = "chatlog";
             botMessage.className = "chatlog";
+            var linkUsed = false;
             //if the message from the user isn't empty then run 
             if (document.getElementById("chatbox").value != "") {
                 //pulls the value from the chatbox ands sets it to lastUserMessage
@@ -254,6 +259,7 @@
                 chatBox.append(userMessage);
                 chatBox.append(newBotMessage);
                 //checks if botMessage used a link
+                linkUsed = linkCheck();
                 if (linkUsed == true) {
                     chatBox.append(yesButton, noButton);
                 }
@@ -288,6 +294,14 @@
             db.collection('resources').doc(resourceType).update({
                 likeCount : firebase.firestore.FieldValue.increment(-1)
             })
+        }
+
+        function linkCheck() {
+            if (botMessage.includes("href")) {
+                return true;
+            } else {
+                return false;
+            }
         }
  
         //runs the keypress() function when a key is pressed
