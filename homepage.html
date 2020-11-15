@@ -209,17 +209,17 @@
             }
 
             if (lastUserMessage === 'coop' || lastUserMessage == "co-op") {
-                //getURL() -> firebase collection
-                //var x = getURL();
+
+                resourceType = "coop";
 
                 var str3 = "<a href='' target='_blank' id='abc'>Click here to find out more about CST coop.</a>";
-                db.collection("resources").doc("coop").get().then(function(c) {
+                db.collection("resources").doc(resourceType).get().then(function(c) {
                         document.getElementById("abc").href = c.data().url;
                         console.log(str3);
-                    })
+                    });
+                var str4 = "<br><br>Did you find this information/link useful?";
                 
-                botMessage = str3;
-                resourceType = "coop";
+                botMessage = str3 + str4;
 
                 /*var str = "<a href='https://www.bcit.ca/workplace-education/co-op/programs/computer-information-computer-systems-technology/' target='_blank'>To find out more about the BCIT CST co-op program, click here!</a>";
                 var str2 = " Please right click and open this in a new tab. \n Did you find what you were looking for? (Y/N)";

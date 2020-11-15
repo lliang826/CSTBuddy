@@ -17,14 +17,25 @@
     
         <style>
 
+            body {
+                background-color: #cdd4ca;
+            }
+
             .buttonContainer {
                 max-width: 50%;
                 margin: auto;
                 display: grid;
                 grid-template-columns: auto;
                 grid-template-rows: auto auto auto;
-                margin-top: 15%;
+                margin-top: 5%;
                 grid-row-gap: 25%;
+            }
+
+            .buttonContainerSmall {
+                max-width: 50%;
+                margin-left: 5%;
+                float: left;
+                margin-top: 200px;
             }
 
             .dropdown { 
@@ -37,14 +48,6 @@
                 width: 100% !important; 
             } 
 
-            #userInformation {
-                width: 50%;
-                margin: auto;
-                text-align: center;
-                margin-top: 5%;
-                font-size: 130%;
-            }
-
             .btn {
                 background-color: darkblue;
                 color: yellow;
@@ -53,6 +56,68 @@
             .btn-primary {
                 width: 20%;
                 justify-self: right;
+            }
+
+            #emailContainer {
+                max-width: 65%;
+                margin: auto;
+                grid-template-columns: auto auto;
+                grid-template-rows: auto auto auto auto auto;
+                background-color: white;
+                margin-top: 5%;
+                display: none;
+            }
+
+            #emailContainer header {
+                border-bottom: 1px solid;
+                padding: 10px;
+                grid-column-start: 1;
+                grid-column-end: 3;
+                grid-row: 1;
+            }
+
+            #emailContainer h2 {
+                font-weight: 600;
+                padding: 15px;
+                grid-column-start: 1;
+                grid-column-end: 3;
+                grid-row: 2;
+            }
+
+            #emailContainer section {
+                width: 90%;
+                margin-left: 20%;
+            }
+            
+            #passwordContainer {
+                max-width: 65%;
+                margin: auto;
+                grid-template-columns: auto auto;
+                grid-template-rows: auto auto auto auto auto;
+                background-color: white;
+                margin-top: 5%;
+                display: none;
+            }
+
+            #passwordContainer header {
+                border-bottom: 1px solid;
+                padding: 10px;
+                grid-column-start: 1;
+                grid-column-end: 3;
+                grid-row: 1;
+            }
+
+            #passwordContainer h2 {
+                font-weight: 600;
+                padding: 15px;
+                grid-column-start: 1;
+                grid-column-end: 3;
+                grid-row: 2;
+            }
+
+            #passwordContainer section {
+                width: 90%;
+                margin-left: 20%;
             }
 
         </style>
@@ -86,35 +151,73 @@
             </div>
           </nav>
 
-        <div id="userInformation">
-            <p>Email: <span id="currentUserEmail">example@hotmail.com</span> </p>
-            <p id="changeEmail">Change email</p> <!--Link to change email-->
-            <p id="changePassword">Change password</p> <!--Link to change password-->
-        </div>
-
         <!-- Drop down buttons for profile, campus, level -->
         <div class="buttonContainer">
-            <div class="btn-group">
-                <button type="button" class="btn btn-secondary btn-lg btn-block dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-                Campus : 
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <div class="btn-group-vertical" role="group" aria-label="Button group with nested dropdown">
+                <button type="button" class="btn btn-secondary">Change Email</button>
+                <button type="button" class="btn btn-secondary">Change Password</button>
+              
+                <div class="btn-group" role="group">
+                  <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Campus :
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                     <button class="dropdown-item" type="button">Burnaby</button>
                     <button class="dropdown-item" type="button">Downtown</button>
+                  </div>
                 </div>
-            </div>
-            <div class="btn-group">
-                <button type="button" class="btn btn-secondary btn-lg btn-block dropdown-toggle" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
-                Level : (Current Selection)
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <button class="dropdown-item" type="button">1</button>
-                    <button class="dropdown-item" type="button">2</button>
-                    <button class="dropdown-item" type="button">3</button>
-                    <button class="dropdown-item" type="button">4</button>
+    
+                <div class="btn-group" role="group">
+                    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Level :
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                        <button class="dropdown-item" type="button">1</button>
+                        <button class="dropdown-item" type="button">2</button>
+                        <button class="dropdown-item" type="button">3</button>
+                        <button class="dropdown-item" type="button">4</button>
+                    </div>
+                  </div>
+              </div>
+            <button class="btn btn-primary" type="submit" id="submitButton">Submit</button>
+        </div>
+
+        <div id="emailContainer">
+            <header>Email Settings</header>
+            <h2>Change Email</h2>
+            <section>
+                <p>Enter Your Current Email</p>
+                <div class="input-group mb-3">
+                    <input type="text" id="email1" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> 
                 </div>
-            </div>
-            <button class="btn btn-primary" type="submit">Submit</button>
+                <p>Enter Your New Email</p>
+                <div class="input-group mb-3">
+                    <input type="text" id="email2" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> 
+                </div>
+                <p>Re-Enter Your New Email</p>
+                <div class="input-group mb-3">
+                    <input type="text" id="email3" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> 
+                </div>
+            </section>
+        </div>
+
+        <div id="passwordContainer">
+            <header>Password Settings</header>
+            <h2>Change Password</h2>
+            <section>
+                <p>Enter Your Current Password</p>
+                <div class="input-group mb-3">
+                    <input type="text" id="password1" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> 
+                </div>
+                <p>Enter Your New Password</p>
+                <div class="input-group mb-3">
+                    <input type="text" id="password2" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> 
+                </div>
+                <p>Re-Enter Your New Password</p>
+                <div class="input-group mb-3">
+                    <input type="text" id="password3" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> 
+                </div>
+            </section>
         </div>
 
         <!-- The core Firebase JS SDK is always required and must be listed first -->

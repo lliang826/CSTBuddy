@@ -6,6 +6,52 @@
             var level2Button = $('button:contains("2")');
             var level3Button = $('button:contains("3")');
             var level4Button = $('button:contains("4")');
+            var changeEmailButton = $('button:contains("Change Email")');
+            var changePasswordButton = $('button:contains("Change Password")');
+            var submit = $('button:contains("Submit")');
+
+            changeEmailButton.click(function() {
+                var menuHolder = $('.buttonContainer');
+
+                if ( $('#passwordContainer').css('display') == 'grid') {
+                    $('#passwordContainer').css('display', 'none');
+                }
+
+                menuHolder.addClass('buttonContainerSmall');
+                menuHolder.removeClass('buttonContainer');
+                $('#emailContainer').css("display", "grid");
+                submit.remove();
+                $('#emailContainer').after(submit);
+                submit.css('margin-top', '5%');
+                submit.css('margin-left', '70%');
+                
+            })
+
+            changePasswordButton.click(function() {
+                var menuHolder = $('.buttonContainer');
+
+                if ( $('#emailContainer').css('display') == 'grid') {
+                    $('#emailContainer').css('display', 'none');
+                }
+
+                menuHolder.addClass('buttonContainerSmall');
+                menuHolder.removeClass('buttonContainer');
+                $('#passwordContainer').css("display", "grid");
+                submit.remove();
+                $('#passwordContainer').after(submit);
+                submit.css('margin-top', '5%');
+                submit.css('margin-left', '70%');
+
+                /*submit.click(function() {
+                    const user = firebase.auth().currentUser;
+                    const credential = firebase.auth.EmailAuthProvider.credential(
+                        user.email,
+                        user.currentPassword
+                    );
+
+                    user.reauthenticateWithCredential(credential);
+                })*/
+            })
 
             campusBurnabyButton.click(function() {
 
@@ -20,7 +66,6 @@
             });
 
             
-            var submit = $('button:contains("Submit")');
             submit.click(function() {
                 var currentCampus = "";
                 if (campusBurnabyButton.hasClass('active')) {
@@ -50,21 +95,7 @@
                 });
             
             
-            /*
-            var user = firebase.auth().currentUser;
-
-            function printUserEmail(){
-                db.collection("users").doc(user).onSnapshot(function(snap){
-                    console.log(snap.data());
-                    console.log(snap.data().email);
-                    document.getElementById("currentUserEmail").innerText = snap.data().email;
-                })
-            }
-
-            printUserEmail();
-            */
-
-            ///////////////////////////////////////
+            
             campusDowntownButton.click(function() {
 
                 if (campusBurnabyButton.hasClass('active')) {
