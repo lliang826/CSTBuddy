@@ -13,6 +13,77 @@
     
     <!-- Firebase CSS for Authentication UI -->
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+    <style>
+        .grid-container{
+            display: grid;
+            grid-template-columns: 55% 45%;
+            grid-template-areas: 
+            "container container1";
+
+        }
+        #container{
+            background-color: rgb(35, 63, 82);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #container1{
+            background-color: rgb(167, 184, 194);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        #title{
+            font-weight: 800;
+            color: white;
+            font-size: 4em;
+            
+        }
+
+        #description{
+            font-weight: 500;
+            color: white;
+            font-size: 2em;
+        }
+
+        .texts{
+            padding-left: 2%;
+        }
+
+        .btn {
+            background-color: rgb(242, 190, 84);
+        }
+
+        @media all and (max-width: 800px) {
+        .grid-container{
+            grid-template-columns: 100%;
+            grid-template-areas: 
+            "container"
+            "container1";
+        }
+
+        #container{
+        width: 100%;
+        }
+
+        #container1{
+        width: 100%
+        }
+
+        #title{
+            font-size: 3em;
+        }
+
+        #description{
+            font-size: 1.5em;;
+        }
+        }
+
+
+    </style>
 
 </head>
 
@@ -41,21 +112,26 @@
         </div>
     </nav>
 
-    <div class="jumbotron jumbotron-fluid" style="background-color:rgb(41, 41, 41);">
-        <div class="container">
-            <h1 class="display-4" style="color: white;">CST Buddy</h1>
-            <p class="lead" style="color: white;">This is a simple app that helps students find the information they
-                need.</p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-        </div>
-    </div> 
-
     <!-- where the login widget / component is going to sit -->
     <!-- The surrounding HTML is left untouched by FirebaseUI.
      Your app may use that space for branding, controls and other customizations.-->
+    <div class="grid-container">
+        <div id="container1">
+            <div class="texts">
+                <p id="title">Lorem Ipsum Dolor</p>
+                <p id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
+                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+                    quis nostrud </p>
+                    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+                
+        </div>
+        </div>
+
+    <div id="container">
     <div id="firebaseui-auth-container"></div>
     <div id="loader">Loading...</div>
-
+    </div>
+    </div>
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
     <!----------------------------------------------->
