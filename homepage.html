@@ -4,84 +4,19 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <style>
-        body {
-            font: 15px arial, sans-serif;
-            background-color: #d9d9d9;
-            /*padding-top: 15px; */
-            padding-bottom: 15px;
-        }
-
-        #bodybox {
-            margin: auto;
-            max-width: 550px;
-            font: 15px arial, sans-serif;
-            background-color: white;
-            border-style: solid;
-            border-width: 1px;
-            padding-top: 20px;
-            padding-bottom: 25px;
-            padding-right: 25px;
-            padding-left: 25px;
-            box-shadow: 5px 5px 5px grey;
-            border-radius: 15px;
-        }
-
-        #chatborder {
-            border-style: solid;
-            background-color: #f6f9f6;
-            border-width: 3px;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            margin-left: 20px;
-            margin-right: 20px;
-            padding-top: 10px;
-            padding-bottom: 15px;
-            padding-right: 20px;
-            padding-left: 15px;
-            border-radius: 15px;
-            overflow: auto;
-            height: 300px;
-        }
-
-        .chatlog {
-            font: 15px arial, sans-serif;
-        }
-
-        #chatbox {
-            font: 17px arial, sans-serif;
-            height: 22px;
-            width: 100%;
-        }
-
-        h1 {
-            margin: auto;
-        }
-
-        pre {
-            background-color: #f0f0f0;
-            margin-left: 20px;
-        }
-
-        h2 {
-            text-align: center;
-        }
-        
-    </style>
-
+    <link rel="stylesheet" href="styles/index.css">
 
     <!-- Bootstrap for Mobile-first, and JQuery -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-        </script>
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
         integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-        </script>
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
         integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous">
-        </script>
+    </script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 
@@ -114,55 +49,23 @@
     </nav>
 
     <!-- Cards -->
-    <div class="container">
-        <div class="row">
-            <div class="col-sm">
-                <div class="card" style="width: 18rem;">
-                    <img src="Chatbot.PNG" class="card-img-top" alt="Chatbot">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Insert something here.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-sm">
-                <div class="card" style="width: 18rem;">
-                    <img src="Chatbot.PNG" class="card-img-top" alt="Chatbot">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Insert something here.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-sm">
-                <div class="card" style="width: 18rem;">
-                    <img src="Chatbot.PNG" class="card-img-top" alt="Chatbot">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Insert something here.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+    <div id="logo-div">
+        <img src="BCIT-logo.png" id="logo" alt="BCIT">
+        <p id="welcome">Welcome to CST Buddy</p>
+        <img src="education.jpg" id="education" alt="slogan">
     </div>
-    
+
     <br>
     <br>
 
     <!-- Chat -->
     <div id='bodybox'>
-        <h2>CST Buddy</h2>
+        <img src="chatbot.svg" id="chatbot-icon" alt="chatbot icon">
         <div id='chatborder'>
-            
+
         </div>
-            <input type="text" name="chat" id="chatbox" placeholder="Hi there! Type &quot;Hello&quot; to talk to me."
-                onfocus="placeHolder()">
+        <input type="text" name="chat" id="chatbox" placeholder="Hi there! Type &quot;Hello&quot; to talk to me."
+            onfocus="placeHolder()">
     </div>
 
 
@@ -187,53 +90,148 @@
             botMessage = "", //var keeps track of what the chatbot is going to say
             botName = 'CST Buddy', //name of the chatbot
             resourceType = "";
-            urL = "";
-        
-            var yesButton = document.createElement("button");
-            var noButton = document.createElement("button");
-            yesButton.textContent = 'Yes!';
-            yesButton.className = 'btn btn-primary';
-            noButton.textContent = 'Not really';
-            noButton.className = 'btn btn-primary';
+        urL = "";
 
-            const chatBox = document.getElementById("chatborder");
-        
+        var yesButton = document.createElement("button");
+        var noButton = document.createElement("button");
+        yesButton.textContent = 'Yes!';
+        yesButton.className = 'btn btn-primary';
+        noButton.textContent = 'Not really';
+        noButton.className = 'btn btn-primary';
+
+        const chatBox = document.getElementById("chatborder");
+
         //edit this function to change what the chatbot says
         function chatbotResponse() {
-            botMessage = "I'm confused"; //the default message
+            botMessage =
+                "Sorry, I don't understand that input. Type &quot;list&quot; for a list of commands."; //the default message
 
-            if (lastUserMessage === 'Hello' || lastUserMessage == 'hello') {
-                botMessage = "Welcome to CST Buddy! How may I help you today? " 
-                    + "To get started, type &quot;Recent Pages&quot; or &quot;Top Visited Pages&quot;. "
-                    + "You can also ask me any question you'd like!";
+            //List of commands
+            if (lastUserMessage === ("list" || "List")) {
+                botMessage =
+                    "Here is a list of things you can ask me regarding the student services at BCIT for the CST program: " +
+                    "&quotcoop&quot, &quotfinancial aid&quot, &quotclubs&quot, &quotrecreation&quot, &quotinternational&quot, " +
+                    "&quothealth&quot, or &quothousing&quot. You can also ask me for &quotRecent Pages&quot or for &quotTop " +
+                    "Visited Pages&quot."
             }
 
-            if (lastUserMessage === 'coop' || lastUserMessage == "co-op") {
+            //Introductory hello message
+            if (lastUserMessage === 'Hello' || lastUserMessage === 'hello' || lastUserMessage === 'hi' ||
+                lastUserMessage === 'Hi') {
+                botMessage = "Welcome to CST Buddy! How may I help you today? " +
+                    "To get started, type &quot;Recent Pages&quot; or &quot;Top Visited Pages&quot;. " +
+                    "You can also ask me things like &quot;coop&quot;, &quot;financial aid&quot;, &quot;clubs&quot;, or anything" +
+                    " else related to CST at BCIT!";
+            }
+
+            //Coop
+            if (lastUserMessage === ("coop" || "co-op" || "co op")) {
 
                 resourceType = "coop";
 
-                var str3 = "<a href='' target='_blank' id='abc'>Click here to find out more about CST coop.</a>";
-                db.collection("resources").doc(resourceType).get().then(function(c) {
-                        document.getElementById("abc").href = c.data().url;
-                        console.log(str3);
-                    });
+                var str1 = "<a href='' target='_blank' id='s1'>Click here to find out more about CST coop.</a>";
+                db.collection("resources").doc(resourceType).get().then(function (c) {
+                    document.getElementById("s1").href = c.data().url;
+                    console.log(str1);
+                });
+                var str2 = "<br><br>Did you find this information/link useful?";
+
+                botMessage = str1 + str2;
+            }
+
+            //Financial Aid
+            if (lastUserMessage === ("financial aid")) {
+
+                resourceType = "financial_aid";
+
+                var str3 =
+                    "<a href='' target='_blank' id='s2'>Click here to find out more about financial aid for CST students.</a>";
+                db.collection("resources").doc(resourceType).get().then(function (c) {
+                    document.getElementById("s2").href = c.data().url;
+                    console.log(str3);
+                });
                 var str4 = "<br><br>Did you find this information/link useful?";
-                
+
                 botMessage = str3 + str4;
-
-                /*var str = "<a href='https://www.bcit.ca/workplace-education/co-op/programs/computer-information-computer-systems-technology/' target='_blank'>To find out more about the BCIT CST co-op program, click here!</a>";
-                var str2 = " Please right click and open this in a new tab. \n Did you find what you were looking for? (Y/N)";
-                botMessage = str + str2;
-                resourceType = "coop";*/
             }
 
-            if (lastUserMessage === "Y") {
-                botMessage = "Thank-you for your feedback! We're glad you enjoyed using the chatbot. Have a nice day!";
+            //Clubs
+            if (lastUserMessage === ("clubs")) {
+
+                resourceType = "clubs";
+
+                var str5 = "<a href='' target='_blank' id='s3'>Click here to find out more about clubs at BCIT.</a>";
+                db.collection("resources").doc(resourceType).get().then(function (c) {
+                    document.getElementById("s3").href = c.data().url;
+                    console.log(str5);
+                });
+                var str6 = "<br><br>Did you find this information/link useful?";
+
+                botMessage = str5 + str6;
             }
 
-            if (lastUserMessage === "N") {
-                botMessage = "Sorry about that. Could you tell us a bit more about why you didn't it?";
+            //Recreation
+            if (lastUserMessage === ("recreation")) {
+
+                resourceType = "recreation";
+
+                var str7 =
+                    "<a href='' target='_blank' id='s4'>Click here to find out more about the recreation services at BCIT.</a>";
+                db.collection("resources").doc(resourceType).get().then(function (c) {
+                    document.getElementById("s4").href = c.data().url;
+                    console.log(str7);
+                });
+                var str8 = "<br><br>Did you find this information/link useful?";
+
+                botMessage = str7 + str8;
             }
+
+            //International
+            if (lastUserMessage === ("international")) {
+
+                resourceType = "international";
+
+                var str9 =
+                    "<a href='' target='_blank' id='s5'>If you are an international student, click here to find out more about study and work permits, insurance, and more.</a>";
+                db.collection("resources").doc(resourceType).get().then(function (c) {
+                    document.getElementById("s5").href = c.data().url;
+                    console.log(str9);
+                });
+                var str10 = "<br><br>Did you find this information/link useful?";
+
+                botMessage = str9 + str10;
+            }
+
+            //Health
+            if (lastUserMessage === ("health")) {
+
+                resourceType = "health";
+
+                var str11 = "<a href='' target='_blank' id='s6'>Click here to find out more about Health and Wellness.</a>";
+                db.collection("resources").doc(resourceType).get().then(function (c) {
+                    document.getElementById("s6").href = c.data().url;
+                    console.log(str11);
+                });
+                var str12 = "<br><br>Did you find this information/link useful?";
+
+                botMessage = str11 + str12;
+            }
+
+            //Housing
+            if (lastUserMessage === ("housing")) {
+
+                resourceType = "housing";
+
+                var str13 = "<a href='' target='_blank' id='s7'>Click here to find out more about student housing at BCIT.</a>";
+                db.collection("resources").doc(resourceType).get().then(function (c) {
+                    document.getElementById("s7").href = c.data().url;
+                    console.log(str13);
+                });
+                var str14 = "<br><br>Did you find this information/link useful?";
+
+                botMessage = str13 + str14;
+            }
+
         }
 
         //this runs each time enter is pressed.
@@ -267,32 +265,32 @@
             }
         }
 
-        
-        yesButton.onclick = function() {
+
+        yesButton.onclick = function () {
             console.log("did this click");
-                positiveFeedback();
-                yesButton.remove();
-                noButton.remove();
-            };
+            positiveFeedback();
+            yesButton.remove();
+            noButton.remove();
+        };
 
 
-        noButton.onclick = function() {
-                negativeFeedback();
-                yesButton.remove();
-                noButton.remove();
-            };
+        noButton.onclick = function () {
+            negativeFeedback();
+            yesButton.remove();
+            noButton.remove();
+        };
 
         function positiveFeedback() {
             console.log("button clicked");
             console.log(resourceType);
             db.collection('resources').doc(resourceType).update({
-                likeCount : firebase.firestore.FieldValue.increment(1)
+                likeCount: firebase.firestore.FieldValue.increment(1)
             })
         };
 
         function negativeFeedback() {
             db.collection('resources').doc(resourceType).update({
-                likeCount : firebase.firestore.FieldValue.increment(-1)
+                likeCount: firebase.firestore.FieldValue.increment(-1)
             })
         }
 
@@ -303,7 +301,7 @@
                 return false;
             }
         }
- 
+
         //runs the keypress() function when a key is pressed
         document.onkeypress = keyPress;
         //if the key pressed is 'enter' runs the function newEntry()
@@ -326,7 +324,6 @@
             document.getElementById("chatbox").placeholder = "";
         }
     </script>
-
 
 </body>
 

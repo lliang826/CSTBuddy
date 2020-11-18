@@ -1,0 +1,187 @@
+#logo-div {
+    background-color: #acbdd3;
+    height: 160px;
+    display: grid;
+    grid-template-columns: 300px 69% 1%;
+}
+
+#logo {
+    width: 160px;
+    height: 160px;
+    border: 0;
+}
+
+#welcome {
+    font-size: 3.6em;
+    height: 220px;
+    color: white;
+    margin-top: 50px;
+}
+
+#education {
+    height: 160px;
+}
+
+#chatbot-icon {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    width: 70px;
+}
+
+body {
+    font: 15px arial, sans-serif;
+    background-color: #d9d9d9;
+    /*padding-top: 15px; */
+    padding-bottom: 15px;
+}
+
+#bodybox {
+    margin: auto;
+    width: 50vw;
+    font: 17px arial, sans-serif;
+    font-weight: 600;
+    background-color: white;
+    border-style: solid;
+    border-width: 1px;
+    padding-top: 20px;
+    padding-bottom: 25px;
+    padding-right: 25px;
+    padding-left: 25px;
+    box-shadow: 5px 5px 5px grey;
+    border-radius: 15px;
+    background-color: #cbc6c3;
+}
+
+#chatborder {
+    border-style: solid;
+    background-color: #f6f9f6;
+    border-width: 3px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    padding-right: 20px;
+    padding-left: 15px;
+    border-radius: 15px;
+    overflow: auto;
+    height: 400px;
+}
+
+.chatlog {
+    font: 15px arial, sans-serif;
+    font-style: italic;
+}
+
+#chatbox {
+    font: 20px arial, sans-serif;
+    height: 30px;
+    width: 100%;
+}
+
+h1 {
+    margin: auto;
+}
+
+pre {
+    background-color: #f0f0f0;
+    margin-left: 20px;
+}
+
+h2 {
+    text-align: center;
+}
+
+@media screen and (max-width: 1800px) {
+    #logo-div {
+        grid-template-columns: 20% 63% 1%;
+    }
+}
+
+@media screen and (max-width: 1650px) {
+    #logo-div {
+        grid-template-columns: 20% 61.6% 1%;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    #logo-div {
+        grid-template-columns: 20% 60% 1%;
+    }
+}
+
+@media screen and (max-width: 1280px) {
+    #logo-div {
+        grid-template-columns: 24% 52% 1%;
+    }
+
+    #welcome {
+        font-size: 3em;
+        margin-top: 50px;
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    #logo-div {
+        grid-template-columns: 20% 52% 1%;
+    }
+
+    #welcome {
+        font-size: 2.5em;
+        margin-top: 50px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #logo { grid-area: logo; }
+    #welcome { grid-area: welcome; }
+    #education { grid-area: education; }
+
+
+    
+    #logo-div {
+        display: grid;
+        grid-template-areas:
+        'logo . education'
+        'welcome welcome welcome';
+
+        background-color: #fef200;
+        grid-template-columns: 20% 42% 1%;
+    }
+
+    #welcome {
+        font-size: 2.5em;
+        margin-top: 50px;
+        color: black;
+        text-align: center;
+    }
+
+    #bodybox {
+        margin-top: 130px;
+        width: 450px;
+    }
+    
+    #chatborder {
+        width: 400px;
+        margin-left: 0px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    #logo-div {
+        grid-template-columns: 20% 32% 1%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #bodybox {
+        width: 450px;
+    }
+
+    #logo-div {
+        grid-template-columns: 20% 22% 1%;
+    }
+}
