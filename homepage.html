@@ -90,7 +90,8 @@
             botMessage = "", //var keeps track of what the chatbot is going to say
             botName = 'CST Buddy', //name of the chatbot
             resourceType = "";
-        urL = "";
+        
+        //var botLink = document.createElement('a');
 
         var yesButton = document.createElement("button");
         var noButton = document.createElement("button");
@@ -128,15 +129,27 @@
             if (lastUserMessage === ("coop" || "co-op" || "co op")) {
 
                 resourceType = "coop";
-
-                var str1 = "<a href='' target='_blank' id='s1'>Click here to find out more about CST coop.</a>";
+                
+                /* var botLinkMessage = document.createTextNode("Click here to find out more about CST coop.");
+                if (botLink.hasChildNodes()) {
+                    botLink.removeChild(botLink.childNodes[0]);
+                }
+                botLink.appendChild(botLinkMessage);
+                //var str1 = "<a href='' target='_blank' id='s1'>Click here to find out more about CST coop.</a>";
                 db.collection("resources").doc(resourceType).get().then(function (c) {
-                    document.getElementById("s1").href = c.data().url;
-                    console.log(str1);
+                    botLink.href = c.data().url;
                 });
                 var str2 = "<br><br>Did you find this information/link useful?";
 
-                botMessage = str1 + str2;
+                botMessage = str2; */
+                var str1 = "<a href='' target='_blank' id='s1'>Click here to find out more about CST coop.</a>";
+                db.collection("resources").doc(resourceType).get().then(function (c) {
+                    document.getElementById("s2").href = c.data().url;
+                    console.log(str3);
+                });
+                var str4 = "<br><br>Did you find this information/link useful?";
+
+                botMessage = str1 + str4;
             }
 
             //Financial Aid
@@ -243,7 +256,7 @@
             botMessage.className = "chatlog";
             var linkUsed = false;
             //if the message from the user isn't empty then run 
-            if (document.getElementById("chatbox").value != "") {
+            if (document.getElementById("chatbox").value != "" && document.getElementById("chatbox").value != "most liked") {
                 //pulls the value from the chatbox ands sets it to lastUserMessage
                 lastUserMessage = document.getElementById("chatbox").value;
                 //sets the chat box to be clear
@@ -255,6 +268,7 @@
                 //add the chatbot's name and message to the array messages
                 newBotMessage.innerHTML = botMessage;
                 chatBox.append(userMessage);
+                //chatBox.append(botLink); <-- Enable this to change how links are handled (along with other commented out code).
                 chatBox.append(newBotMessage);
                 //checks if botMessage used a link
                 linkUsed = linkCheck();
@@ -262,6 +276,41 @@
                     chatBox.append(yesButton, noButton);
                 }
                 chatBox.scrollTop = chatBox.scrollHeight - chatBox.clientHeight;
+            } else if (document.getElementById("chatbox").value == "most liked") {
+                lastUserMessage = document.getElementById("chatbox").value;
+                document.getElementById("chatbox").value = "";
+                userMessage.innerText = lastUserMessage;
+                chatBox.append(userMessage);
+                
+                db.collection("resources").where("likeCount", ">", 0).orderBy("likeCount", "desc").limit(3)
+                .get().then(function(querySnapshot) {
+                    querySnapshot.forEach(function(doc) {
+
+                        //Creates a p element with the text of the resource.
+                        var linksName = document.createElement('p');
+                        var linksMessage = document.createTextNode(doc.id);
+                        linksName.appendChild(linksMessage);
+                        chatBox.append(linksName);
+
+                        //Creates the anchor element and gives it the text below.
+                        var botLink = document.createElement('a');
+                        var botLinkMessage = document.createTextNode("Student's have found these resources/links useful.");
+                        botLink.appendChild(botLinkMessage);
+                        botLink.href = doc.data().url;
+                        chatBox.append(botLink);
+
+                        //Creates an empty <p> element which provides spacing
+                        var emptyP = document.createElement('p');
+                        var emptyPNode = document.createTextNode("");
+                        emptyP.appendChild(emptyPNode);
+                        chatBox.append(emptyP);
+
+                        chatBox.scrollTop = chatBox.scrollHeight - chatBox.clientHeight;
+                    });
+                })
+                .catch(function(error) {
+                    console.log("Error getting documents: ", error);
+                });
             }
         }
 

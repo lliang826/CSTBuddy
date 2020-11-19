@@ -95,6 +95,10 @@ h2 {
     text-align: center;
 }
 
+#MostLikedLinks {
+    margin-top: 5px;
+}
+
 @media screen and (max-width: 1800px) {
     #logo-div {
         grid-template-columns: 20% 63% 1%;
