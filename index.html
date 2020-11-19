@@ -14,6 +14,9 @@
     <!-- Firebase CSS for Authentication UI -->
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
     <style>
+        body{
+            background-color: #153e5c;
+        }
         .grid-container{
             display: grid;
             grid-template-columns: 55% 45%;
@@ -34,6 +37,7 @@
             height: 100vh;
             display: flex;
             align-items: center;
+            animation: Slide_Right 1.6s ease;
         }
 
         #title{
@@ -57,6 +61,17 @@
             background-color: #f2be54;
         }
 
+        @keyframes Slide_Right {
+            0%{
+                transform:translateX(-400px);
+
+            }
+            100%{
+                transform:translateX(0);
+            }
+        }
+
+
         @media all and (max-width: 800px) {
         .grid-container{
             grid-template-columns: 100%;
@@ -67,10 +82,12 @@
 
         #container{
         width: 100%;
+        
         }
 
         #container1{
-        width: 100%
+        width: 100%;
+        animation: none; 
         }
 
         #title{
@@ -80,11 +97,11 @@
         #description{
             font-size: 1.5em;;
         }
+        
         }
 
 
     </style>
-
 </head>
 
 <body>
@@ -122,7 +139,7 @@
                 <p id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
                     eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
                     quis nostrud </p>
-                    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+                    <a class="btn btn-primary btn-lg" href="mainpage.html" role="button">Return Home</a>
                 
         </div>
         </div>
