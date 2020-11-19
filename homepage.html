@@ -36,13 +36,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Chat Bot</a>
+                    <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="profilepage.html">My Profile <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="profilepage.html">My Profile</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -94,6 +91,7 @@
             botMessage = "", //var keeps track of what the chatbot is going to say
             botName = 'CST Buddy', //name of the chatbot
             resourceType = "";
+            
         
         //var botLink = document.createElement('a');
 
@@ -150,12 +148,16 @@
                 botMessage = str2; */
                 var str1 = "<a href='' target='_blank' id='s1'>Click here to find out more about CST coop.</a>";
                 db.collection("resources").doc(resourceType).get().then(function (c) {
-                    document.getElementById("s2").href = c.data().url;
-                    console.log(str3);
+                    document.getElementById("s1").href = c.data().url;
+                    console.log(str1);
                 });
-                var str4 = "<br><br>Did you find this information/link useful?";
+                var str2 = "<br><br>Did you find this information/link useful?";
 
-                botMessage = str1 + str4;
+                /*db.collection('resources').doc(resourceType).update({
+                visitCount: firebase.firestore.FieldValue.increment(1)
+                })*/
+                visitCounter();
+                botMessage = str1 + str2;
             }
 
             //Financial Aid
@@ -171,6 +173,8 @@
                 });
                 var str4 = "<br><br>Did you find this information/link useful?";
 
+                visitCounter();
+
                 botMessage = str3 + str4;
             }
 
@@ -185,6 +189,8 @@
                     console.log(str5);
                 });
                 var str6 = "<br><br>Did you find this information/link useful?";
+
+                visitCounter();
 
                 botMessage = str5 + str6;
             }
@@ -202,6 +208,8 @@
                 });
                 var str8 = "<br><br>Did you find this information/link useful?";
 
+                visitCounter();
+
                 botMessage = str7 + str8;
             }
 
@@ -217,6 +225,8 @@
                     console.log(str9);
                 });
                 var str10 = "<br><br>Did you find this information/link useful?";
+
+                visitCounter();
 
                 botMessage = str9 + str10;
             }
@@ -234,6 +244,8 @@
                 });
                 var str12 = "<br><br>Did you find this information/link useful?";
 
+                visitCounter();
+
                 botMessage = str11 + str12;
             }
 
@@ -250,6 +262,8 @@
                 });
                 var str14 = "<br><br>Did you find this information/link useful?";
 
+                visitCounter();
+
                 botMessage = str13 + str14;
             }
 
@@ -263,8 +277,9 @@
             userMessage.className = "chatlog";
             botMessage.className = "chatlog";
             var linkUsed = false;
+            var chatMessage = document.getElementById("chatbox").value.toLowerCase();
             //if the message from the user isn't empty then run 
-            if (document.getElementById("chatbox").value != "" && document.getElementById("chatbox").value != "most liked") {
+            if (chatMessage != "" && chatMessage != "most liked" && chatMessage != "top searches") {
                 //pulls the value from the chatbox ands sets it to lastUserMessage
                 lastUserMessage = document.getElementById("chatbox").value;
                 //sets the chat box to be clear
@@ -284,7 +299,7 @@
                     chatBox.append(yesButton, noButton);
                 }
                 chatBox.scrollTop = chatBox.scrollHeight - chatBox.clientHeight;
-            } else if (document.getElementById("chatbox").value == "most liked") {
+            } else if (chatMessage == "most liked") {
                 lastUserMessage = document.getElementById("chatbox").value;
                 document.getElementById("chatbox").value = "";
                 userMessage.innerText = lastUserMessage;
@@ -302,7 +317,42 @@
 
                         //Creates the anchor element and gives it the text below.
                         var botLink = document.createElement('a');
-                        var botLinkMessage = document.createTextNode("Student's have found these resources/links useful.");
+                        var botLinkMessage = document.createTextNode("Students have found these resources/links useful.");
+                        botLink.appendChild(botLinkMessage);
+                        botLink.href = doc.data().url;
+                        chatBox.append(botLink);
+
+                        //Creates an empty <p> element which provides spacing
+                        var emptyP = document.createElement('p');
+                        var emptyPNode = document.createTextNode("");
+                        emptyP.appendChild(emptyPNode);
+                        chatBox.append(emptyP);
+
+                        chatBox.scrollTop = chatBox.scrollHeight - chatBox.clientHeight;
+                    });
+                })
+                .catch(function(error) {
+                    console.log("Error getting documents: ", error);
+                });
+            } else if (chatMessage == "top searches") {
+                lastUserMessage = document.getElementById("chatbox").value;
+                document.getElementById("chatbox").value = "";
+                userMessage.innerText = lastUserMessage;
+                chatBox.append(userMessage);
+                
+                db.collection("resources").where("visitCount", ">", 0).orderBy("visitCount", "desc").limit(3)
+                .get().then(function(querySnapshot) {
+                    querySnapshot.forEach(function(doc) {
+
+                        //Creates a p element with the text of the resource.
+                        var linksName = document.createElement('p');
+                        var linksMessage = document.createTextNode(doc.id);
+                        linksName.appendChild(linksMessage);
+                        chatBox.append(linksName);
+
+                        //Creates the anchor element and gives it the text below.
+                        var botLink = document.createElement('a');
+                        var botLinkMessage = document.createTextNode("Students have found these resources/links useful.");
                         botLink.appendChild(botLinkMessage);
                         botLink.href = doc.data().url;
                         chatBox.append(botLink);
@@ -322,12 +372,19 @@
             }
         }
 
+        function visitCounter() {
+            db.collection('resources').doc(resourceType).update({
+                visitCount: firebase.firestore.FieldValue.increment(1)
+            })
+        };
 
         yesButton.onclick = function () {
-            console.log("did this click");
             positiveFeedback();
             yesButton.remove();
             noButton.remove();
+
+            var thankYou = "Thank you for giving us some feedback! We're glad this link was helpful :)";
+            chatBox.append(thankYou);
         };
 
 
@@ -335,11 +392,13 @@
             negativeFeedback();
             yesButton.remove();
             noButton.remove();
+
+            var noThanks = "Thank you for giving us some feedback! We're sorry this link wasn't helpful, we will look into this to try to improve it for future use." 
+                + " Is there a different topic we could help you with?";
+            chatBox.append(noThanks);
         };
 
         function positiveFeedback() {
-            console.log("button clicked");
-            console.log(resourceType);
             db.collection('resources').doc(resourceType).update({
                 likeCount: firebase.firestore.FieldValue.increment(1)
             })
