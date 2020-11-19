@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/homepage.css">
 
     <!-- Bootstrap for Mobile-first, and JQuery -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -18,6 +18,10 @@
         integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- Changing the font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -50,9 +54,9 @@
 
     <!-- Cards -->
     <div id="logo-div">
-        <img src="BCIT-logo.png" id="logo" alt="BCIT">
+        <img src="images/BCIT-logo.png" id="logo" alt="BCIT">
         <p id="welcome">Welcome to CST Buddy</p>
-        <img src="education.jpg" id="education" alt="slogan">
+        <img src="images/education.jpg" id="education" alt="slogan">
     </div>
 
     <br>
@@ -60,7 +64,7 @@
 
     <!-- Chat -->
     <div id='bodybox'>
-        <img src="chatbot.svg" id="chatbot-icon" alt="chatbot icon">
+        <img src="images/chatbot.svg" id="chatbot-icon" alt="chatbot icon">
         <div id='chatborder'>
 
         </div>
@@ -103,11 +107,14 @@
 
         //edit this function to change what the chatbot says
         function chatbotResponse() {
+
+            lastUserMessage = lastUserMessage.toLowerCase();
+
             botMessage =
                 "Sorry, I don't understand that input. Type &quot;list&quot; for a list of commands."; //the default message
 
             //List of commands
-            if (lastUserMessage === ("list" || "List")) {
+            if (lastUserMessage.includes("list")) {
                 botMessage =
                     "Here is a list of things you can ask me regarding the student services at BCIT for the CST program: " +
                     "&quotcoop&quot, &quotfinancial aid&quot, &quotclubs&quot, &quotrecreation&quot, &quotinternational&quot, " +
@@ -116,8 +123,7 @@
             }
 
             //Introductory hello message
-            if (lastUserMessage === 'Hello' || lastUserMessage === 'hello' || lastUserMessage === 'hi' ||
-                lastUserMessage === 'Hi') {
+            if (lastUserMessage.includes("hello") || lastUserMessage.includes("hi")) {
                 botMessage = "Welcome to CST Buddy! How may I help you today? " +
                     "To get started, type &quot;Recent Pages&quot; or &quot;Top Visited Pages&quot;. " +
                     "You can also ask me things like &quot;coop&quot;, &quot;financial aid&quot;, &quot;clubs&quot;, or anything" +
@@ -125,7 +131,7 @@
             }
 
             //Coop
-            if (lastUserMessage === ("coop" || "co-op" || "co op")) {
+            if (lastUserMessage.includes("coop") || lastUserMessage.includes("co-op") || lastUserMessage.includes("co op")) {
 
                 resourceType = "coop";
 
@@ -140,7 +146,7 @@
             }
 
             //Financial Aid
-            if (lastUserMessage === ("financial aid")) {
+            if (lastUserMessage.includes("financial aid")) {
 
                 resourceType = "financial_aid";
 
@@ -156,7 +162,7 @@
             }
 
             //Clubs
-            if (lastUserMessage === ("clubs")) {
+            if (lastUserMessage.includes("clubs")) {
 
                 resourceType = "clubs";
 
@@ -171,7 +177,7 @@
             }
 
             //Recreation
-            if (lastUserMessage === ("recreation")) {
+            if (lastUserMessage.includes("recreation")) {
 
                 resourceType = "recreation";
 
@@ -187,7 +193,7 @@
             }
 
             //International
-            if (lastUserMessage === ("international")) {
+            if (lastUserMessage.includes("international")) {
 
                 resourceType = "international";
 
@@ -203,11 +209,12 @@
             }
 
             //Health
-            if (lastUserMessage === ("health")) {
+            if (lastUserMessage.includes("health")) {
 
                 resourceType = "health";
 
-                var str11 = "<a href='' target='_blank' id='s6'>Click here to find out more about Health and Wellness.</a>";
+                var str11 =
+                    "<a href='' target='_blank' id='s6'>Click here to find out more about Health and Wellness.</a>";
                 db.collection("resources").doc(resourceType).get().then(function (c) {
                     document.getElementById("s6").href = c.data().url;
                     console.log(str11);
@@ -218,11 +225,12 @@
             }
 
             //Housing
-            if (lastUserMessage === ("housing")) {
+            if (lastUserMessage.includes("housing")) {
 
                 resourceType = "housing";
 
-                var str13 = "<a href='' target='_blank' id='s7'>Click here to find out more about student housing at BCIT.</a>";
+                var str13 =
+                    "<a href='' target='_blank' id='s7'>Click here to find out more about student housing at BCIT.</a>";
                 db.collection("resources").doc(resourceType).get().then(function (c) {
                     document.getElementById("s7").href = c.data().url;
                     console.log(str13);

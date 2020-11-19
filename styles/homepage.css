@@ -16,6 +16,7 @@
     height: 220px;
     color: white;
     margin-top: 50px;
+    font-family: 'Crimson Text', serif;
 }
 
 #education {
@@ -40,7 +41,7 @@ body {
 #bodybox {
     margin: auto;
     width: 50vw;
-    font: 17px arial, sans-serif;
+    font: 20px 'Crimson Text', sans-serif;
     font-weight: 600;
     background-color: white;
     border-style: solid;
@@ -72,12 +73,12 @@ body {
 }
 
 .chatlog {
-    font: 15px arial, sans-serif;
+    font: 17px arial, sans-serif;
     font-style: italic;
 }
 
 #chatbox {
-    font: 20px arial, sans-serif;
+    font: 20px 'arial', sans-serif;
     height: 30px;
     width: 100%;
 }
