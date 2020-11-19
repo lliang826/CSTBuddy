@@ -42,10 +42,9 @@
                     <a class="nav-link" href="profilepage.html">My Profile</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            <div>
+                Hi, <span id="profileName">User Name</span>
+            </div>
         </div>
     </nav>
 
@@ -134,7 +133,10 @@
 
                 resourceType = "coop";
                 
-                /* var botLinkMessage = document.createTextNode("Click here to find out more about CST coop.");
+                /* 
+                *This code will allow change how URLs are output
+                *
+                var botLinkMessage = document.createTextNode("Click here to find out more about CST coop.");
                 if (botLink.hasChildNodes()) {
                     botLink.removeChild(botLink.childNodes[0]);
                 }
@@ -145,7 +147,9 @@
                 });
                 var str2 = "<br><br>Did you find this information/link useful?";
 
-                botMessage = str2; */
+                botMessage = str2; 
+                *
+                */
                 var str1 = "<a href='' target='_blank' id='s1'>Click here to find out more about CST coop.</a>";
                 db.collection("resources").doc(resourceType).get().then(function (c) {
                     document.getElementById("s1").href = c.data().url;
@@ -439,6 +443,16 @@
         function placeHolder() {
             document.getElementById("chatbox").placeholder = "";
         }
+
+        function readUserName() {
+            firebase.auth().onAuthStateChanged(function (user) {
+                db.collection("users").doc(user.uid).onSnapshot(function(snap) {
+                    document.getElementById("profileName").innerText = snap.data().name;
+                })
+            })
+        };
+
+        readUserName();
     </script>
 
 </body>

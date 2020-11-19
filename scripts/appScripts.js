@@ -200,3 +200,13 @@
             };
 
             updateCampusAndLevel();
+
+            function readUserName() {
+                firebase.auth().onAuthStateChanged(function (user) {
+                    db.collection("users").doc(user.uid).onSnapshot(function(snap) {
+                        document.getElementById("profileName").innerText = snap.data().name;
+                    })
+                })
+            };
+
+            readUserName();
