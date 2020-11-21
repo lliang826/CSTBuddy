@@ -43,16 +43,6 @@
                 $('#passwordContainer').after(submit);
                 submit.css('margin-top', '5%');
                 submit.css('margin-left', '70%');
-
-                /*submit.click(function() {
-                    const user = firebase.auth().currentUser;
-                    const credential = firebase.auth.EmailAuthProvider.credential(
-                        user.email,
-                        user.currentPassword
-                    );
-
-                    user.reauthenticateWithCredential(credential);
-                })*/
             })
 
             campusBurnabyButton.click(function() {
