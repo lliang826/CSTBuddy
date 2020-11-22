@@ -70,9 +70,18 @@
                 transform:translateX(0);
             }
         }
+        @keyframes Slide_Down {
+            0%{
+                transform:translateY(-300px);
+
+            }
+            100%{
+                transform:translateX(0);
+            }
+        }
 
 
-        @media all and (max-width: 800px) {
+        @media all and (max-width: 600px) {
         .grid-container{
             grid-template-columns: 100%;
             grid-template-areas: 
@@ -82,20 +91,23 @@
 
         #container{
         width: 100%;
+        height: 60vh;
         
         }
 
         #container1{
         width: 100%;
-        animation: none; 
+        animation: Slide_Down 2s ease;
+        height: 60vh;
         }
 
         #title{
-            font-size: 3em;
+            font-size: 2.5em;
         }
 
         #description{
-            font-size: 1.5em;;
+            font-weight: 500;
+            font-size: 1em;;
         }
         
         }
