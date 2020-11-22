@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>My BCIT Project</title>
+    <meta name="comp1800 boilerplate code" content="my bcit project">
+    <meta name="author" content="BCIT">
+
+    <!-- Bootstrap for Mobile-first, and JQuery -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+
+    <!-- Firebase CSS for Authentication UI -->
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+    <style>
+        .banner {
+            width: 100vw;
+            height: 60vh;
+            background: linear-gradient(171deg, rgba(21, 62, 92, 1) 0%, rgba(135, 174, 180, 1) 100%);
+            display: flex;
+            justify-content: center;
+        }
+
+        #Title {
+            color: white;
+            font-size: 45pt;
+            font-weight: 300;
+            text-align: center;
+        }
+
+        #p1 {
+            color: white;
+            font-size: 16pt;
+            font-weight: 300;
+            text-align: center;
+        }
+
+        #button-holder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn1 {
+            border-radius: 5px;
+            background: #f2be54;
+            color: white;
+        }
+
+        .container-holder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container1 {
+            width: 60vw;
+            height: 70vh;
+        }
+
+        #headline {
+            text-align: center;
+        }
+
+        #head1 {
+            font-size: 25pt;
+            font-weight: 300;
+        }
+
+        #p2 {
+            font-weight: 300;
+            font-size: 13pt;
+            margin: 0 10% 0 10%;
+        }
+
+        #cardholders {
+            display: grid;
+            grid-column: 33% 33% 33%;
+            padding: 10%;
+            grid-template-areas:
+                "a b c"
+        }
+
+        .card {
+            border: 0px;
+        }
+
+        #card1 {
+            display: flex;
+            justify-content: space-around;
+            margin: 10%;
+        }
+
+        .img-adjust {
+            display: flex;
+            justify-content: center;
+        }
+
+
+        .card-img-top {
+
+            height: 50px;
+            width: 50px;
+
+        }
+
+        .container2 {
+            width: 60vw;
+            height: 20vh;
+        }
+
+        #box {
+            display: flex;
+            background: rgba(205, 212, 202, .2);
+        }
+
+        #box1 {
+            width: 40vw;
+            height: 20vh;
+            display: flex;
+            align-items: center;
+            line-height: 120%;
+
+        }
+
+        #box2 {
+            width: 20vw;
+            height: 20vh;
+            display: flex;
+            align-items: center;
+        }
+
+        #p4 {
+            font-weight: 400;
+            font-size: 20pt;
+            padding-left: 20px;
+            color: rgba(1, 1, 1, 0.5);
+        }
+
+        .btn2 {
+            border-radius: 5px;
+            background: #f2be54;
+            color: white;
+        }
+
+        .holder {
+            animation: Fade_In 3s ease;
+        }
+
+        @keyframes Fade_In {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-------------------------------------->
+    <!-- The following is HTML for layout -->
+    <!-------------------------------------->
+    <!-- Header Navigation Bar -->
+
+    <div class="banner">
+        <div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="holder">
+                <p id="Title">Learn How To Get Started</p>
+                <p id="p1">Sed ut perspiciatis unde omnis iste natus error sit voluptatem.
+                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem.
+                </p>
+                <p id="p1">ed ut perspiciatis unde omnis iste natus error sit voluptatem.
+                    Sed ut perspiciatis unde omnis iste natus</p>
+                <br>
+                <br>
+                <div id="button-holder">
+                    <a class="btn1 btn-primary btn-lg" href="index.html" role="button">Return Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-holder">
+        <div>
+            <div class="container1">
+                <div id="headline">
+                    <div>
+                        <br>
+                        <br>
+                        <p id="head1">Content</p>
+                        <p id="p2">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                            ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                </div>
+                <div id="cardholders">
+                    <div id="card1">
+                        <div class="card" style="width: 18rem;">
+                            <div class="img-adjust">
+                                <img class="card-img-top"
+                                    src="https://www.flaticon.com/svg/static/icons/svg/633/633759.svg"
+                                    alt="Card image cap">
+                            </div>
+                            <div class="card-body">
+                                <p class="cardtext"></p>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="card1">
+                        <div class="card" style="width: 18rem;">
+                            <div class="img-adjust">
+                                <img class="card-img-top"
+                                    src="https://www.flaticon.com/svg/static/icons/svg/1246/1246332.svg"
+                                    alt="Card image cap">
+                            </div>
+                            <div class="card-body">
+                                <p class="cardtext"></p>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="card1">
+                        <div class="card" style="width: 18rem;">
+                            <div class="img-adjust">
+                                <img class="card-img-top"
+                                    src="https://www.flaticon.com/svg/static/icons/svg/483/483356.svg"
+                                    alt="Card image cap">
+                            </div>
+                            <div class="card-body">
+                                <p class="cardtext"></p>
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="container2">
+                <div id="box">
+                    <div id="box1">
+                        <div>
+                            <p id="p4">Quis autem vel eum iure reprehenderit</p>
+                            <p id="p4">qui in ea voluptate velit esse quam.</p>
+                        </div>
+                    </div>
+                    <div id="box2">
+                        <a class="btn2 btn-primary btn-lg" href="mainpage.html" role="button">Sign Up Today</a>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+
+    <!-- where the login widget / component is going to sit -->
+    <!-- The surrounding HTML is left untouched by FirebaseUI.
+     Your app may use that space for branding, controls and other customizations.-->
+
+    <!----------------------------------------------->
+    <!-- JS: Boostrap, Firebase, API related    -->
+    <!----------------------------------------------->
+
+    <!-- Copied from firebase documentation -->
+
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.1/firebase-firestore.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+
+    <!-- these 2 line aren for Auth UI library and CSS-->
+    <script src="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.js"></script>
+
+    <!-- Firebase API key information -->
+
+    <script src="scripts/firebase_api.js"></script>
+
+</body>
+
+</html>
