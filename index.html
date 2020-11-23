@@ -3,9 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <title>My BCIT Project</title>
-    <meta name="comp1800 boilerplate code" content="my bcit project">
-    <meta name="author" content="BCIT">
+    <title>CST Buddy</title>
+    
 
     <!-- Bootstrap for Mobile-first, and JQuery -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,142 +16,8 @@
     
     <!-- Firebase CSS for Authentication UI -->
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
-    <style>
-        #container{
-            background: linear-gradient(171deg, rgba(21,62,92,1) 0%, rgba(135,174,180,1) 100%);
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-        }
-
-        #box{
-            background-color: white;
-            animation: Slide_Up 1.5s ease;
-            height: 60vh;
-            width: 70vw;
-            display: grid;
-            grid-template-columns: 40% 60%;
-            grid-template-areas: 
-            "box1 box2";
-            padding-left: 5%;
-        }
-
-        #box1{
-            display:flex;
-            align-items: center;
-        }
-        
-        #box2{
-            display:flex;
-            align-items: center;
-            justify-content: center;
-        }
-        #icon{
-            height:400px;
-            width:450px;
-        }
-        #title{
-            color: black;
-            font-size: 30pt;
-            font-weight: 700;   
-        }
-        
-        #description{
-            color:black;
-            font-size: 14pt;
-            font-weight: 400;
-        }
-
-        #subtext{
-            color:black;
-            font-size: 10pt;
-            font-weight: 200;
-        }
-        .btn1{
-            border-radius: 5px;
-            background-color: #153e5c;
-        }
-        .btn2{
-            border-radius: 5px;
-            background-color: white;
-            border: 1px solid black;
-            color:black;
-        }
-
-        @media screen and (max-width: 1200px) {
-            #title{
-                font-size: 30pt;
-            }
-            #description{
-                font-size: 15pt;
-            }
-            #icon{
-                width:190px;
-                height:165px;
-            }
-            #box{
-            grid-template-columns: 65% 35%;
-            grid-template-areas: 
-            "box1 box2";
-            padding: 2%;
-            }
-            .buttons{
-                height: 40px;
-                width:auto;
-                display: inline;
-                
-            }
-            .btn1{
-                font-size: 12pt;
-            }
-            .btn2{
-                font-size: 12pt;
-            }
-        }
-
-        @media screen and (max-width: 700px) {
-            #title{
-                font-size: 20pt;
-            }
-            #description{
-                font-size: 12pt;
-            }
-            #icon{
-                width:150px;
-                height:125px;
-            }
-            #box{
-            grid-template-columns: 100%;
-            grid-template-areas: 
-            "box1";
-            padding: 2%;
-            }
-            .buttons{
-                height: 40px;
-                width:auto;
-                display: inline;
-            }
-            .btn1{
-                font-size: 13pt;
-            }
-            .btn2{
-                font-size: 13pt;
-            }
-        }
-
-        @keyframes Slide_Up {
-            0%{
-                transform:translateY(70px);
-
-            }
-            100%{
-                transform:translateY(0);
-            }
-        }
-
-    </style>
+    
+    <link rel="stylesheet" href="styles/index.css">
 
 </head>
 

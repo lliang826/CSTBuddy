@@ -120,7 +120,6 @@ function newEntry() {
     let userMessage = document.createElement("p");
     let newBotMessage = document.createElement("p");
     idExpansion();
-    console.log(numberString);
     newBotMessage.id = numberString; //Create an array that adds on a single letter each time it's run.
     userMessage.className = "chatlog";
     botMessage.className = "chatlog";
@@ -190,6 +189,8 @@ function queryLink(resourceType) {
 }
 
 function mostLiked() {
+    let userMessage = document.createElement("p");
+    userMessage.className = "chatlog";
     lastUserMessage = document.getElementById("chatbox").value;
     document.getElementById("chatbox").value = "";
     userMessage.innerText = lastUserMessage;
@@ -205,6 +206,8 @@ function mostLiked() {
 };
 
 function topSearches() {
+    let userMessage = document.createElement("p");
+    userMessage.className = "chatlog";
     lastUserMessage = document.getElementById("chatbox").value;
     document.getElementById("chatbox").value = "";
     userMessage.innerText = lastUserMessage;
@@ -220,6 +223,8 @@ function topSearches() {
 };
 
 function campusPreference() {
+    let userMessage = document.createElement("p");
+    userMessage.className = "chatlog";
     lastUserMessage = document.getElementById("chatbox").value;
     document.getElementById("chatbox").value = "";
     userMessage.innerText = lastUserMessage;
@@ -295,6 +300,7 @@ yesButton.onclick = function () {
     var thankYouHTML = document.createElement('p');
     thankYouHTML.innerHTML = thankYou;
     chatBox.append(thankYouHTML);
+    chatBox.scrollTop = chatBox.scrollHeight - chatBox.clientHeight;
 };
 
 
@@ -309,6 +315,7 @@ noButton.onclick = function () {
     var noThanksHTML = document.createElement('p');
     noThanksHTML.innerHTML = noThanks;
     chatBox.append(noThanksHTML);
+    chatBox.scrollTop = chatBox.scrollHeight - chatBox.clientHeight;
 };
 
 function positiveFeedback() {

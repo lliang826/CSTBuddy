@@ -3,9 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <title>My BCIT Project</title>
-    <meta name="comp1800 boilerplate code" content="my bcit project">
-    <meta name="author" content="BCIT">
+    <title>CST Buddy</title>
+    
 
     <!-- Bootstrap for Mobile-first, and JQuery -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,107 +12,9 @@
     
     <!-- Firebase CSS for Authentication UI -->
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
-    <style>
-        body{
-            background-color: #153e5c;
-        }
-        .grid-container{
-            display: grid;
-            grid-template-columns: 55% 45%;
-            grid-template-areas: 
-            "container container1";
-
-        }
-        #container{
-            background-color: #153e5c;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #container1{
-            background-color:  #87aeb4;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            animation: Slide_Right 1.6s ease;
-        }
-
-        #title{
-            font-weight: 800;
-            color: white;
-            font-size: 4em;
-            
-        }
-
-        #description{
-            font-weight: 500;
-            color: white;
-            font-size: 2em;
-        }
-
-        .texts{
-            padding-left: 2%;
-        }
-
-        .btn {
-            background-color: #f2be54;
-        }
-
-        @keyframes Slide_Right {
-            0%{
-                transform:translateX(-400px);
-
-            }
-            100%{
-                transform:translateX(0);
-            }
-        }
-        @keyframes Slide_Down {
-            0%{
-                transform:translateY(-300px);
-
-            }
-            100%{
-                transform:translateX(0);
-            }
-        }
-
-
-        @media all and (max-width: 600px) {
-        .grid-container{
-            grid-template-columns: 100%;
-            grid-template-areas: 
-            "container"
-            "container1";
-        }
-
-        #container{
-        width: 100%;
-        height: 60vh;
-        
-        }
-
-        #container1{
-        width: 100%;
-        animation: Slide_Down 2s ease;
-        height: 60vh;
-        }
-
-        #title{
-            font-size: 2.5em;
-        }
-
-        #description{
-            font-weight: 500;
-            font-size: 1em;;
-        }
-        
-        }
-
-
-    </style>
+    
+    <link rel="stylesheet" href="styles/mainpage.css">
+    
 </head>
 
 <body>

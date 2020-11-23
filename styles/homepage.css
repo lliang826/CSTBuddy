@@ -33,9 +33,19 @@
 
 body {
     font: 15px arial, sans-serif;
-    background-color: #bdbdc4;
+    background-color: white;
     /*padding-top: 15px; */
     padding-bottom: 15px;
+}
+
+.btn {
+    background-color: #153e5c;
+    margin-left: 5px;
+    border-color: #153e5c;
+}
+
+.btn:hover {
+    background-color: #f2be54;
 }
 
 #bodybox {
