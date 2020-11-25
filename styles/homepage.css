@@ -1,3 +1,19 @@
+#collapse {
+    margin: auto;
+    width: 50%;
+}
+
+#collapse .btn {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#collapseExample {
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
 #logo-div {
     background-color: #87aeb4;
     height: 160px;

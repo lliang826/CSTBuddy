@@ -31,14 +31,14 @@ function chatbotResponse() {
         botMessage =
             "Here is a list of things you can ask me regarding the student services at BCIT for the CST program: " +
             "&quotcoop&quot, &quotfinancial aid&quot, &quotclubs&quot, &quotrecreation&quot, &quotinternational&quot, " +
-            "&quothealth&quot, or &quothousing&quot. You can also ask me for &quotRecent Pages&quot or for &quotTop " +
-            "Visited Pages&quot."
+            "&quothealth&quot, or &quothousing&quot. You can also ask me for &quotMost Liked&quot, &quotTop " +
+            "Searches&quot, or &quot;My Campus&quot;.";
     }
 
     //Introductory hello message
     if (lastUserMessage.includes("hello") || lastUserMessage.includes("hi")) {
         botMessage = "Welcome to CST Buddy! How may I help you today? " +
-            "To get started, type &quot;Recent Pages&quot; or &quot;Top Visited Pages&quot;. " +
+            "To get started, type &quot;Most Liked&quot;, &quot;Top Searches&quot;, or &quot;My Campus&quot;. " +
             "You can also ask me things like &quot;coop&quot;, &quot;financial aid&quot;, &quot;clubs&quot;, or anything" +
             " else related to CST at BCIT!";
     }
@@ -48,7 +48,9 @@ function chatbotResponse() {
 
         resourceType = "coop";
 
-        var str1 = "Co-Op is a great way to gain practical work experience. Typically in CST your work semester is 8 months long.<br><br>"
+        var str1 = "Co-Op is a great way to gain practical work experience. Typically in CST your work semester is 8 months long, " + 
+            "but it can also be 4 months. Please contact an advisor or your program head for more information. Placements usually " +
+            "commence in either January or May<br><br>"
 
         botMessage = str1;
     }
@@ -58,7 +60,9 @@ function chatbotResponse() {
 
         resourceType = "financial_aid";
 
-        var str1 = "Financial aid can support students by providing scholarships, fee deferrals, and student loans.<br>"
+        var str1 = "Financial aid can support students by providing scholarships, fee deferrals, and student loans. For student loans " +
+            "and grants, you will need to apply through StudentAidBC, which is government-funded and repayable with no interest. Please " +
+            "check your eligibility and other requirements before applying.<br><br>"
 
         botMessage = str1;
     }
@@ -68,7 +72,7 @@ function chatbotResponse() {
 
         resourceType = "clubs";
 
-        var str1 = "BCIT has a many different clubs for students to join.<br>"
+        var str1 = "BCIT has tons of different clubs for students to join! No matter what you're interested in, there is a club for you!<br><br>"
 
         botMessage = str1;
     }
@@ -78,7 +82,9 @@ function chatbotResponse() {
 
         resourceType = "recreation";
 
-        var str1 = "Recreation information.<br>"
+        var str1 = "All current full-time and part-time BCIT students have complimentary access to the weight Room, gymnasium, change rooms, " +
+            "shower facilities, outdoor tracks and courts, and much more. Members of the general public also have access to these facilities, " +
+            "but must pay for a membership. BCIT alumni are also required to pay for membership, but at a discounted price.<br><br>"
 
         botMessage = str1;
     }
@@ -88,8 +94,8 @@ function chatbotResponse() {
 
         resourceType = "international";
 
-        var str1 = "If you're an international student there can be different documents that you might need.<br>"
-            + "Check out the link below to find out more about how you can best prepare for studying at BCIT.<br>"
+        var str1 = "If you are an international student, you may need to apply for a study (or work) permit, as well as medical " +
+            " insurance. Check out the link below to find out more about how you can best prepare for studying at BCIT.<br><br>"
 
         botMessage = str1;
     }
@@ -99,7 +105,9 @@ function chatbotResponse() {
 
         resourceType = "health";
 
-        var str1 = "Maintaining your health can be a difficult thing, especially while studying remotely.<br>"
+        var str1 = "Maintaining your health can be a difficult thing, especially while studying remotely. If you are looking " +
+            "for confidential one-on-one counseling to find support, BCIT's counselors are here for you. Please note that " +
+            "appointments are currently being conducted by phone or by video during this pandemic.<br><br>"
 
         botMessage = str1;
     }
@@ -109,7 +117,7 @@ function chatbotResponse() {
 
         resourceType = "housing";
 
-        var str1 = "Looking to live at BCIT?<br>"
+        var str1 = "Looking for on campus housing? Click the link below to get started!<br><br>"
 
         botMessage = str1;
     }
