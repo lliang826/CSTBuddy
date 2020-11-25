@@ -1,202 +1,268 @@
-            var campusHeaderButton = $('button:contains("Campus")');
-            var campusBurnabyButton = $('button:contains("Burnaby")');
-            var campusDowntownButton = $('button:contains("Downtown")');
-            var levelHeaderButton = $('button:contains("Level")');
-            var level1Button = $('button:contains("1")');
-            var level2Button = $('button:contains("2")');
-            var level3Button = $('button:contains("3")');
-            var level4Button = $('button:contains("4")');
-            var changeEmailButton = $('button:contains("Change Email")');
-            var changePasswordButton = $('button:contains("Change Password")');
-            var submit = $('button:contains("Submit")');
-            var currentCampus = "";
-            var currentLevel = 0;
+var campusHeaderButton = $('button:contains("Campus")');
+var campusBurnabyButton = $('button:contains("Burnaby")');
+var campusDowntownButton = $('button:contains("Downtown")');
+var levelHeaderButton = $('button:contains("Level")');
+var level1Button = $('button:contains("1")');
+var level2Button = $('button:contains("2")');
+var level3Button = $('button:contains("3")');
+var level4Button = $('button:contains("4")');
+var changeEmailButton = $('button:contains("Change Email")');
+var changePasswordButton = $('button:contains("Change Password")');
+var submit = $('button:contains("Submit")');
+var currentCampus = "";
+var currentLevel = 0;
 
-            changeEmailButton.click(function() {
-                var menuHolder = $('.buttonContainer');
+/**
+ * Changes the display of the buttons on the screen and brings
+ * up a email change form.
+ * 
+ */
+changeEmailButton.click(function () {
+    var menuHolder = $('.buttonContainer');
 
-                if ( $('#passwordContainer').css('display') == 'grid') {
-                    $('#passwordContainer').css('display', 'none');
-                }
+    if ($('#passwordContainer').css('display') == 'grid') {
+        $('#passwordContainer').css('display', 'none');
+    }
 
-                menuHolder.addClass('buttonContainerSmall');
-                menuHolder.removeClass('buttonContainer');
-                $('#emailContainer').css("display", "grid");
-                submit.remove();
-                $('#emailContainer').after(submit);
-                submit.css('margin-top', '5%');
-                submit.css('margin-left', '70%');
-                
-            })
+    menuHolder.addClass('buttonContainerSmall');
+    menuHolder.removeClass('buttonContainer');
+    $('#emailContainer').css("display", "grid");
+    submit.remove();
+    $('#emailContainer').after(submit);
+    submit.css('margin-top', '5%');
+    submit.css('margin-left', '70%');
 
-            changePasswordButton.click(function() {
-                var menuHolder = $('.buttonContainer');
+})
 
-                if ( $('#emailContainer').css('display') == 'grid') {
-                    $('#emailContainer').css('display', 'none');
-                }
+/**
+ * Changes the display of the buttons on the screen and brings
+ * up a password change form.
+ * 
+ */
+changePasswordButton.click(function () {
+    var menuHolder = $('.buttonContainer');
 
-                menuHolder.addClass('buttonContainerSmall');
-                menuHolder.removeClass('buttonContainer');
-                $('#passwordContainer').css("display", "grid");
-                submit.remove();
-                $('#passwordContainer').after(submit);
-                submit.css('margin-top', '5%');
-                submit.css('margin-left', '70%');
-            })
+    if ($('#emailContainer').css('display') == 'grid') {
+        $('#emailContainer').css('display', 'none');
+    }
 
-            campusBurnabyButton.click(function() {
+    menuHolder.addClass('buttonContainerSmall');
+    menuHolder.removeClass('buttonContainer');
+    $('#passwordContainer').css("display", "grid");
+    submit.remove();
+    $('#passwordContainer').after(submit);
+    submit.css('margin-top', '5%');
+    submit.css('margin-left', '70%');
+})
 
-                if (campusDowntownButton.hasClass('active')) {
-                    campusDowntownButton.removeClass('active');
-                    campusBurnabyButton.addClass('active');
-                }
-                else {
-                    campusBurnabyButton.addClass('active');
-                }
-                $(campusHeaderButton).html("Campus : Burnaby");
-            });
-            
-            campusDowntownButton.click(function() {
+/**
+ * Checks to see if one of the campus dropdown
+ * menus buttons is selected, if so it removes
+ * the 'active' class which highlights a selected button
+ * and assigns it to the newly clicked choice (Burnaby).
+ * 
+ */
+campusBurnabyButton.click(function () {
 
-                if (campusBurnabyButton.hasClass('active')) {
-                    campusBurnabyButton.removeClass('active');
-                    campusDowntownButton.addClass('active');
-                }
-                else {
-                    campusDowntownButton.addClass('active');
-                }
-                
-                $(campusHeaderButton).html("Campus : Downtown");
+    if (campusDowntownButton.hasClass('active')) {
+        campusDowntownButton.removeClass('active');
+        campusBurnabyButton.addClass('active');
+    } else {
+        campusBurnabyButton.addClass('active');
+    }
+    $(campusHeaderButton).html("Campus : Burnaby");
+});
 
-            });
+/**
+ * Checks to see if one of the campus dropdown
+ * menus buttons is selected, if so it removes
+ * the 'active' class which highlights a selected button
+ * and assigns it to the newly clicked choice (Downtown).
+ * 
+ */
+campusDowntownButton.click(function () {
 
-            level1Button.click(function() {
-                if (level2Button.hasClass('active') || 
-                    level3Button.hasClass('active') || 
-                    level4Button.hasClass('active')) {
-                        level2Button.removeClass('active');
-                        level3Button.removeClass('active');
-                        level4Button.removeClass('active');
-                        level1Button.addClass('active');
-                }
-                else {
-                    level1Button.addClass('active');
-                }
+    if (campusBurnabyButton.hasClass('active')) {
+        campusBurnabyButton.removeClass('active');
+        campusDowntownButton.addClass('active');
+    } else {
+        campusDowntownButton.addClass('active');
+    }
 
-                $(levelHeaderButton).html("Level : 1");
-            });
+    $(campusHeaderButton).html("Campus : Downtown");
 
-            level2Button.click(function() {
-                if (level1Button.hasClass('active') || 
-                    level3Button.hasClass('active') || 
-                    level4Button.hasClass('active')) {
-                        level1Button.removeClass('active');
-                        level3Button.removeClass('active');
-                        level4Button.removeClass('active');
-                        level2Button.addClass('active');
-                }
-                else {
-                    level2Button.addClass('active');
-                }
+});
 
-                $(levelHeaderButton).html("Level : 2");
-            });
+/**
+ * Checks to see if one of the level dropdown
+ * menus buttons is selected, if so it removes
+ * the 'active' class which highlights a selected button
+ * and assigns it to the newly clicked choice (level 1).
+ * 
+ */
+level1Button.click(function () {
+    if (level2Button.hasClass('active') ||
+        level3Button.hasClass('active') ||
+        level4Button.hasClass('active')) {
+        level2Button.removeClass('active');
+        level3Button.removeClass('active');
+        level4Button.removeClass('active');
+        level1Button.addClass('active');
+    } else {
+        level1Button.addClass('active');
+    }
 
-            level3Button.click(function() {
-                if (level1Button.hasClass('active') || 
-                    level2Button.hasClass('active') || 
-                    level4Button.hasClass('active')) {
-                        level1Button.removeClass('active');
-                        level2Button.removeClass('active');
-                        level4Button.removeClass('active');
-                        level3Button.addClass('active');
-                }
-                else {
-                    level3Button.addClass('active');
-                }
+    $(levelHeaderButton).html("Level : 1");
+});
 
-                $(levelHeaderButton).html("Level : 3");
-            });
+/**
+ * Checks to see if one of the level dropdown
+ * menus buttons is selected, if so it removes
+ * the 'active' class which highlights a selected button
+ * and assigns it to the newly clicked choice (level 2).
+ * 
+ */
+level2Button.click(function () {
+    if (level1Button.hasClass('active') ||
+        level3Button.hasClass('active') ||
+        level4Button.hasClass('active')) {
+        level1Button.removeClass('active');
+        level3Button.removeClass('active');
+        level4Button.removeClass('active');
+        level2Button.addClass('active');
+    } else {
+        level2Button.addClass('active');
+    }
 
-            level4Button.click(function() {
-                if (level1Button.hasClass('active') || 
-                    level2Button.hasClass('active') || 
-                    level3Button.hasClass('active')) {
-                        level1Button.removeClass('active');
-                        level2Button.removeClass('active');
-                        level3Button.removeClass('active');
-                        level4Button.addClass('active');
-                }
-                else {
-                    level4Button.addClass('active');
-                }
+    $(levelHeaderButton).html("Level : 2");
+});
 
-                $(levelHeaderButton).html("Level : 4");
-            });
+/**
+ * Checks to see if one of the level dropdown
+ * menus buttons is selected, if so it removes
+ * the 'active' class which highlights a selected button
+ * and assigns it to the newly clicked choice (level 3).
+ * 
+ */
+level3Button.click(function () {
+    if (level1Button.hasClass('active') ||
+        level2Button.hasClass('active') ||
+        level4Button.hasClass('active')) {
+        level1Button.removeClass('active');
+        level2Button.removeClass('active');
+        level4Button.removeClass('active');
+        level3Button.addClass('active');
+    } else {
+        level3Button.addClass('active');
+    }
 
-            submit.click(function() {
-                firebase.auth().onAuthStateChanged(function (user) {
-                    db.collection("users").doc(user.uid).onSnapshot(function(snap) {
-                        if (snap.data().campus == "") {
-                            currentCampus = "Selection Needed";
-                        } else {
-                            currentCampus = snap.data().campus;
-                        }
-                        if (snap.data().level == 0) {
-                            currentLevel = 0;
-                        } else {
-                            currentLevel = snap.data().level;
-                        }
-                    })
-                })
+    $(levelHeaderButton).html("Level : 3");
+});
 
-                if (campusBurnabyButton.hasClass('active')) {
-                    currentCampus = "Burnaby";
-                } else if (campusDowntownButton.hasClass('active')) {
-                    currentCampus = "Downtown";
-                }
-                
-                if (level1Button.hasClass('active')) {
-                    currentLevel = 1;
-                } else if (level2Button.hasClass('active')) {
-                    currentLevel = 2;
-                } else if (level3Button.hasClass('active')) {
-                    currentLevel = 3;
-                } else if (level4Button.hasClass('active')) {
-                    currentLevel = 4;
-                }
+/**
+ * Checks to see if one of the level dropdown
+ * menus buttons is selected, if so it removes
+ * the 'active' class which highlights a selected button
+ * and assigns it to the newly clicked choice (level 4).
+ * 
+ */
+level4Button.click(function () {
+    if (level1Button.hasClass('active') ||
+        level2Button.hasClass('active') ||
+        level3Button.hasClass('active')) {
+        level1Button.removeClass('active');
+        level2Button.removeClass('active');
+        level3Button.removeClass('active');
+        level4Button.addClass('active');
+    } else {
+        level4Button.addClass('active');
+    }
 
-                firebase.auth().onAuthStateChanged(function (user) {
-                    db.collection("users").doc(user.uid).update({
-                        campus : currentCampus,
-                        level : currentLevel
-                        })
-                    })
-                });
+    $(levelHeaderButton).html("Level : 4");
+});
 
-            function updateCampusAndLevel() {
-                firebase.auth().onAuthStateChanged(function (user){
-                    db.collection("users").doc(user.uid).onSnapshot(function(snap){
-                        console.log(snap.data());
-                        console.log(snap.data().campus);
-                        console.log(snap.data().level);
-                        currentLevel = snap.data().level;
-                        currentCampus = snap.data().campus;
-                        $(campusHeaderButton).html("Campus : " + snap.data().campus);
-                        $(levelHeaderButton).html("Level : " + snap.data().level);
-                    })
-                })
-            };
+/**
+ * When the submit button is clicked the program
+ * assigns the value of currentCampus and currentLevel
+ * to the current 'active' button from their selection.
+ * It then writes the chosen campus and level to the
+ * users profile.
+ * 
+ */
+submit.click(function () {
+    firebase.auth().onAuthStateChanged(function (user) {
+        db.collection("users").doc(user.uid).onSnapshot(function (snap) {
+            if (snap.data().campus == "") {
+                currentCampus = "Selection Needed";
+            } else {
+                currentCampus = snap.data().campus;
+            }
+            if (snap.data().level == 0) {
+                currentLevel = 0;
+            } else {
+                currentLevel = snap.data().level;
+            }
+        })
+    })
 
-            updateCampusAndLevel();
+    if (campusBurnabyButton.hasClass('active')) {
+        currentCampus = "Burnaby";
+    } else if (campusDowntownButton.hasClass('active')) {
+        currentCampus = "Downtown";
+    }
 
-            function readUserName() {
-                firebase.auth().onAuthStateChanged(function (user) {
-                    db.collection("users").doc(user.uid).onSnapshot(function(snap) {
-                        document.getElementById("profileName").innerText = snap.data().name;
-                    })
-                })
-            };
+    if (level1Button.hasClass('active')) {
+        currentLevel = 1;
+    } else if (level2Button.hasClass('active')) {
+        currentLevel = 2;
+    } else if (level3Button.hasClass('active')) {
+        currentLevel = 3;
+    } else if (level4Button.hasClass('active')) {
+        currentLevel = 4;
+    }
 
-            readUserName();
+    firebase.auth().onAuthStateChanged(function (user) {
+        db.collection("users").doc(user.uid).update({
+            campus: currentCampus,
+            level: currentLevel
+        })
+    })
+});
+
+/**
+ * updateCampusAndLevel reads the users current campus and level
+ * selections in from the users profile and sets the text on the
+ * Campus and Level dropdown menus to display their choices. 
+ * 
+ * This essentially ensures that if the user navigates away from the 
+ * profile page and returns then they will see what they had
+ * selected previously.
+ * 
+ */
+function updateCampusAndLevel() {
+    firebase.auth().onAuthStateChanged(function (user) {
+        db.collection("users").doc(user.uid).onSnapshot(function (snap) {
+            currentLevel = snap.data().level;
+            currentCampus = snap.data().campus;
+            $(campusHeaderButton).html("Campus : " + snap.data().campus);
+            $(levelHeaderButton).html("Level : " + snap.data().level);
+        })
+    })
+};
+
+updateCampusAndLevel();
+
+/**
+ * Reads the users name from firestore and writes it to the navbar 
+ * to indicate that they've signed in.
+ * 
+ */
+function readUserName() {
+    firebase.auth().onAuthStateChanged(function (user) {
+        db.collection("users").doc(user.uid).onSnapshot(function (snap) {
+            document.getElementById("profileName").innerText = snap.data().name;
+        })
+    })
+};
+
+readUserName();

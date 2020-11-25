@@ -7,8 +7,6 @@ var lastUserMessage = "", //keeps track of the most recent input string from the
     idNum = 0,
     numberString = "";
 
-var letterArray = ["a", "b", "c", "d", "e"];
-
 var yesButton = document.createElement("button");
 var noButton = document.createElement("button");
 yesButton.textContent = 'Yes!';
@@ -18,7 +16,14 @@ noButton.className = 'btn btn-primary';
 
 const chatBox = document.getElementById("chatborder");
 
-//edit this function to change what the chatbot says
+/**
+ * ChatbotResponse compares the last user message to a series of potential responses and if
+ * it matches then it passes the corresponding bot message back to the newEntry function. 
+ * 
+ * When the users input corresponds to a resource for students (that we have in our database)
+ * the resourceType variable is set to the name of the corresponding document in firebase.
+ * 
+ */
 function chatbotResponse() {
 
     lastUserMessage = lastUserMessage.toLowerCase();
@@ -124,6 +129,17 @@ function chatbotResponse() {
 
 }
 
+/**
+ * newEntry is run each time the user presses the enter key. This method takes the current string in the
+ * input field and checks to see if it should return one of the lists ("most liked", "top searches", or
+ * "my campus") or if it should return a single link & message from the chatbotResponse function.
+ * 
+ * In order to display the user message we create a <p> element for it and the bot message and
+ * pass the lastUserMessage and botMessage to their new respective variables. In addition, we use the
+ * idExpansion function to constantly create a new id for the newBotMessage variable which 
+ * becomes important in order to have the links display properly in the chatbot.
+ * 
+ */
 function newEntry() {
     let userMessage = document.createElement("p");
     let newBotMessage = document.createElement("p");
@@ -145,7 +161,10 @@ function newEntry() {
         chatBox.append(userMessage);
         chatBox.append(newBotMessage);
 
-        queryLink(resourceType);
+        if (botMessage.includes("Sorry") == false && botMessage.includes("Welcome") == false 
+        && botMessage.includes("list of things") == false) {
+            queryLink(resourceType);
+        }
 
         chatBox.scrollTop = chatBox.scrollHeight - chatBox.clientHeight;
 
@@ -164,6 +183,11 @@ function newEntry() {
     }
 };
 
+/**
+ * Appends a new number to the numberString variable which is used
+ * as the id for newBotMessage in the newEntry function.
+ * 
+ */
 function idExpansion() {
 
     numberString = "";
@@ -174,6 +198,20 @@ function idExpansion() {
     idNum++;
 }
 
+/**
+ * queryLink reads into the "resource" collection in firebase and finds the document
+ * which matches the string stored in resourceType. 
+ * 
+ * Once found it creates an anchor element to attach the URL property 
+ * (a property of each document in the resource collection). 
+ * 
+ * Lastly, it appends our feedback buttons.
+ * 
+ * @param {*} resourceType refers to the document in firebase which is currently
+ *                          being referenced by the user. This is used to get the
+ *                          rest of the information for that resource.
+ * 
+ */
 function queryLink(resourceType) {
 
     db.collection("resources").doc(resourceType).get().then(function (c) {
@@ -181,6 +219,7 @@ function queryLink(resourceType) {
         var botLinkMessage = document.createTextNode("Click here to find out more.");
         botLink.appendChild(botLinkMessage);
         botLink.href = c.data().url;
+        botLink.target = "_blank";
         var appender = document.getElementById(numberString);
         appender.append(botLink);
 
@@ -196,6 +235,15 @@ function queryLink(resourceType) {
     visitCounter(resourceType);
 }
 
+/**
+ * mostLiked displays a list of the top 3 most liked (most positive feedback) links.
+ * It does this by going through a similar method as the newEntry function (reading in
+ * the users input, storing it in lastUserMessage and passing it to userMessage which
+ * is the <p> element which will display the text in the chatbot). 
+ * 
+ * Afterwards it calls the documentLoop function which returns the top 3 links.
+ * 
+ */
 function mostLiked() {
     let userMessage = document.createElement("p");
     userMessage.className = "chatlog";
@@ -213,6 +261,15 @@ function mostLiked() {
     documentLoop(criteriaType);
 };
 
+/**
+ * topSearches displays a list of the top 3 most searched links.
+ * It does this by going through a similar method as the newEntry function (reading in
+ * the users input, storing it in lastUserMessage and passing it to userMessage which
+ * is the <p> element which will display the text in the chatbot). 
+ * 
+ * Afterwards it calls the documentLoop function which returns the top 3 links.
+ * 
+ */
 function topSearches() {
     let userMessage = document.createElement("p");
     userMessage.className = "chatlog";
@@ -230,6 +287,22 @@ function topSearches() {
     documentLoop(criteriaType);
 };
 
+/**
+ * campusPreference displays a list of the top 3 most liked (most positive feedback) links
+ * which are specific to the users campus. For example, if the user sets their campus to
+ * Burnaby then they will see the top 3 most useful links based on other Burnaby students
+ * feedback.
+ * 
+ * It does this by initially going through a similar method as the newEntry function (reading in
+ * the users input, storing it in lastUserMessage and passing it to userMessage which
+ * is the <p> element which will display the text in the chatbot). 
+ * 
+ * Afterwards it reads into firebase looks for the current users campus value, stored in their
+ * user profile, which is found using their unique user id. Depending on which campus the user
+ * has chosen it will then display the top 3 most useful links for whichever campus matches the 
+ * users settings.
+ * 
+ */
 function campusPreference() {
     let userMessage = document.createElement("p");
     userMessage.className = "chatlog";
@@ -260,22 +333,37 @@ function campusPreference() {
                 documentLoop(criteriaType);
 
             } else {
-                console.log("No campus found");
+                var intro = document.createElement('p');
+                var introMessage = document.createTextNode("Hmm, I can't seem to find your campus. Make sure to set it on your profile page!");
+                intro.appendChild(introMessage);
+                chatBox.append(intro);
+                chatBox.scrollTop = chatBox.scrollHeight - chatBox.clientHeight;
             }
         });
     });
 };
 
+/**
+ * documentLoop reads through the firestore database and finds the top 3 links that match the 
+ * given criteriaType (likeCount, visitCount, burnabyLikes, or downtownLikes). It then iterates
+ * over those 3 documents and writes the links from the document to the anchor element which
+ * is then appended to the chatbot.
+ * 
+ * @param {*} criteriaType a string which holds the name of the property being used to find the
+ *                         links
+ * 
+ */
 function documentLoop(criteriaType) {
     db.collection("resources").where(criteriaType, ">", 0).orderBy(criteriaType, "desc").limit(3)
         .get().then(function (querySnapshot) {
             querySnapshot.forEach(function (doc) {
 
-                //Creates the anchor element and gives it the text below.
+                //Creates the anchor element which links to the page that is named.
                 var botLink = document.createElement('a');
                 var botLinkMessage = document.createTextNode(doc.id);
                 botLink.appendChild(botLinkMessage);
                 botLink.href = doc.data().url;
+                botLink.target = "_blank";
                 chatBox.append(botLink);
 
                 //Creates an empty <p> element which provides spacing
@@ -292,12 +380,28 @@ function documentLoop(criteriaType) {
         });
 };
 
+/**
+ * visitCounter updates (increments) the visitCount property of the specified
+ * document in the resource collection.
+ * 
+ * @param {*} resourceType refers to the document in firebase which is currently
+ *                          being referenced by the user. This is used to get the
+ *                          rest of the information for that resource.
+ * 
+ */
 function visitCounter(resourceType) {
     db.collection('resources').doc(resourceType).update({
         visitCount: firebase.firestore.FieldValue.increment(1)
     })
 };
 
+/**
+ * Runs when the yes button, displayed after a single link is shown, is clicked.
+ * This function calls the positiveFeedback and campusLike functions and then 
+ * removes the two button elements from the chatbot and replaces them with a 
+ * thank you message.
+ * 
+ */
 yesButton.onclick = function () {
     positiveFeedback();
     campusLike();
@@ -311,7 +415,13 @@ yesButton.onclick = function () {
     chatBox.scrollTop = chatBox.scrollHeight - chatBox.clientHeight;
 };
 
-
+/**
+ * Runs when the no button, displayed after a single link is shown, is clicked.
+ * This function calls the negativeFeedback and campusUnlike functions and then 
+ * removes the two button elements from the chatbot and replaces them with a 
+ * thank you message.
+ * 
+ */
 noButton.onclick = function () {
     negativeFeedback();
     campusUnlike();
@@ -326,18 +436,32 @@ noButton.onclick = function () {
     chatBox.scrollTop = chatBox.scrollHeight - chatBox.clientHeight;
 };
 
+/**
+ * Updates (increments) the specified documents likeCount variable.
+ * 
+ */
 function positiveFeedback() {
     db.collection('resources').doc(resourceType).update({
         likeCount: firebase.firestore.FieldValue.increment(1)
     })
 };
 
+/**
+ * Updates (decrements) the specified documents likeCount variable.
+ * 
+ */
 function negativeFeedback() {
     db.collection('resources').doc(resourceType).update({
         likeCount: firebase.firestore.FieldValue.increment(-1)
     })
 }
 
+/**
+ * Reads the campus value in the user profile and depending on which campus
+ * was selected updates (increments) the appropriate property in the referenced
+ * document.
+ * 
+ */
 function campusLike() {
     var userCampus = "";
     firebase.auth().onAuthStateChanged(function (user) {
@@ -358,6 +482,12 @@ function campusLike() {
     })
 };
 
+/**
+ * Reads the campus value in the user profile and depending on which campus
+ * was selected updates (decrements) the appropriate property in the referenced
+ * document.
+ * 
+ */
 function campusUnlike() {
     var userCampus = "";
     firebase.auth().onAuthStateChanged(function (user) {
@@ -380,18 +510,32 @@ function campusUnlike() {
 
 document.onkeypress = keyPress;
 
-function keyPress(yes) {
-    var x = yes || window.event;
+/**
+ * Is called when the enter key is pressed and calls the newEntry function
+ * to read in what the user has entered.
+ * 
+ */
+function keyPress() {
+    var x = window.event;
     var key = (x.keyCode || x.which);
     if (key == 13 || key == 3) {
         newEntry();
     }
 }
 
+/**
+ * Clears the placeholder text when the input field is clicked.
+ * 
+ */
 function placeHolder() {
     document.getElementById("chatbox").placeholder = "";
 }
 
+/**
+ * Reads the users name from firestore and writes it to the navbar 
+ * to indicate that they've signed in.
+ * 
+ */
 function readUserName() {
     firebase.auth().onAuthStateChanged(function (user) {
         db.collection("users").doc(user.uid).onSnapshot(function (snap) {
