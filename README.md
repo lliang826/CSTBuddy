@@ -3,11 +3,12 @@
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Contents](#content)
+* [References](#references)
 
 ## Team Members
-Bryce Daynard
-Gyephel Tenzin
-Lawrence Liang
+* Bryce Daynard
+* Gyephel Tenzin
+* Lawrence Liang
 
 ## General Info
 This browser based web application is designed to
@@ -15,130 +16,71 @@ help BCIT students navigate the student services resource pages so they can quic
 	
 ## Technologies
 Technologies used for this project:
-* HTML, CSS
+* HTML
+* CSS
 * JavaScript
+* JQuery
+* Node.js
+* Firebase & Firestore
 * Bootstrap 
 	
 ## Content
 Content of the project folder:
 
- Top level of project folder: 
-├── login.html               # landing HTML file, this is what users see when you come to url
-├── profile.html             # settings/profile file
-├── main.html                # homepage of the application
+Top level of project folder: 
+├── .vscode folder
+├── images
+├── scripts
+├── styles
+├── .gitignore               
+├── 404.html                 # Error page for when a page is not found.
+├── homepage.html            # Page that loads after user logs in, also where the chatbot is located.
+├── index.html               # Landing HTML file, this is what users see when you come to url.
+├── learnmore.html           # Information about our app and it's use.
+├── mainpage.html            # Login page for the app.
+├── profile.html             # Users profile page.
 └── README.md
 
-It has the following subfolders and files:
-├── .git                     # Folder for git repo
+Sub-folders and their files:
+
+.vscode:
+└── settings.json            # contains liveServer information.
+
+images:
+├── BCIT-logo.png            # from https://www.bcit.ca (see reference below)
+├── Chatbot-icon.png         # index.html page chatbot picture
+├── chatbot.svg              # chatbot icon used on homepage.html
+├── chatbubble.svg           # chat message icon used on learnmore.html
+├── education.jpg            # from https://www.bcit.ca (see reference below)
+├── search.svg               # magnifying glass icon used on learnmore.html
+└── thumbsup.svg             # thumbs up icon used on learnmore.html
+
+scripts:
+├── chatbotScripts.js        # Javascript, JQuery, and firebase code for manipulation of the chatbot
+├── firebase_api.js          # firebase api key to connect to our database
+├── login.js                 # Javascript & firebase code for the mainpage.html which allows the user to login.
+└── profileScript.js         # Javascript, JQuery, and firebase code for the profile page which allows users to personalize their profile.
+
+styles: 
+├── homepage.css             # CSS for the homepage.html.
+├── index.css                # CSS for the index.html page.
+├── learnmore.css            # CSS for the learnmore.html page.
+├── mainpage.css             # CSS for the mainpage.html.
+└── profilepage.css          # CSS for the profilepage.html.
 
 Firebase hosting files: 
-├── .firebaserc...
+├── .firebaserc               
+├── firebase.json             
+├── firestore.indexes.json   
+└── firestore.rules          
+
+## References
+
+Images:
 
 
-## Chat Bot Information
-//links
-//http://eloquentjavascript.net/09_regexp.html
-//https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
-
-        <!--
-        <br>
-        <br>
-        <h2>Build a Chatbot</h2>
-        <p>Write a program that responds to the user's text input.</p>
-        <ul style="list-style-type:disc">
-            <li>Input strings of text from the user.</li>
-            <li>Output different strings of text in response.</li>
-            <li>Here is my attempt: <a href="https://codepen.io/lilgreenland/pen/zqXLeJ">notbot</a>
-        </ul>
-        <br>
-        <h3>
-            <p>How to Use This Template!</p>
-        </h3>
-        <p>Fork this template!</p>
-        <p>The template has several functions that allow you to focus on programming the chatbot's behavoir. It will
-            read in the user's strings from the input box. It will keep a record of every message and display the last
-            few messages above the input box.</p>
-        <p>To control what the chatbot will say make changes to the javascript function <b>chatbotResponse()</b> . You
-            can also change the HTML or CSS. There is no need to keep these directions.</p>
-        <p>The variable <b>lastUserMessage</b> is a string that records the last thing typed.</p>
-        <p>The variable <b>botMessage</b> is a string that controls what the chatbot will say.</p>
-        <p>Example:</p>
-        <pre><code>if (lastUserMessage === 'hi'){
-        botMessage = 'Howdy!';
-      }</pre></code>
-        <pre><code>if (lastUserMessage === 'what is your name'){
-        botMessage = 'My name is' + botName;
-      }</pre></code>
+Libraries:
 
 
-        <br>
-        <br>
-        <h3>
-            <p>Ideas</p>
-        </h3>
-        <p>Narrow the range of topics the chatbot responds to, like an adventure time chatbot.</p>
-        <p>Customize the html and CSS to fit your theme.</p>
-        <p>If you only have a few responses, tell the user what commands work.</p>
-        <p>Use a <a href="https://www.w3schools.com/js/js_switch.asp">switch statement</a> to simplify a large number of
-            if else branches.</p>
+Open-source projects:
 
-        <br>
-        <br>
-        <h3>
-            <p>Advanced Ideas</p>
-        </h3>
-        <p>Use the <a href="https://www.w3schools.com/jsref/jsref_tolowercase.asp">.tolowercase()</a> command to ignore
-            capitalization.</p>
-        <p>Make variables to keep track of what's been said. Use those variables in an If stement to produce a new set
-            of responses.</p>
-
-        <p>Respond to the users by using what they said. For example:</p>
-        <pre><b>User:</b> I like puppies
-      <b>Chatbot:</b> Tell me more about puppies.</pre>
-
-        <p>Use the <a href="https://www.w3schools.com/jsref/jsref_obj_date.asp">date</a> function to answer questions
-            like "what time is it?".</p>
-        <p>Quizbot?</p>
-        <p>Calculator Mathbot?</p>
-        <p>Canvas drawbot!</p>
-        <p>Write a text adventure game. Like <a href="http://www.web-adventures.org/">these</a>.</p>
-        <p>Build an array with several similar responses and have the chatbot pick one at random, like this:
-        <pre><code>var hi = ['hi','howdy','hello','hey'];
-      botMessage = hi[Math.floor(Math.random()*(hi.length))];</pre></code></p>
-        <p>Use <a href="https://www.w3schools.com/js/js_regexp.asp">regular expressions</a> for powerful searches. Here
-            is my <a href="https://codepen.io/lilgreenland/pen/YGENqK?editors=0010">example</a></p>
-
-        <p>Regular expressions can search in a way similar to a google search. This example searches for words that are
-            cat-like. It also ignores capitalization and looks for the words preceded and followed by spaces.</p>
-        <pre><code>var n = lastUserMessage.search(/\b(cat|cats|kitten|feline)\b/i);
-      if (n !== -1) {
-        botMessage = 'I hate cats!';
-      } </pre></code>
-
-        <p>Here is an example that looks for ways to say dog as singular or plural. It then repeats back the dog related
-            word to the user.</p>
-        <pre><code>var patt = /\b(dogs?|pup(s|py|pies?)?|canines?)\b/i;
-      var result = patt.exec(lastUserMessage);
-      if (result) {
-        botMessage = 'I love ' + result[0];
-      } </pre></code>
-        <br>
-        <br>
-        <h3>
-            <p>Links:</p>
-        </h3>
-        <ul style="list-style-type:disc">
-            <li><a href="https://www.w3schools.com/js/js_strings.asp">tutorial on strings</a></li>
-            <li><a href="https://www.w3schools.com/js/js_string_methods.asp">string methods</a></li>
-            <li><a href="https://www.w3schools.com/jsref/jsref_obj_string.asp">string reference</a></li>
-            <li><a href="https://www.w3schools.com/js/js_regexp.asp">regular expressions tutorial</a></li>
-            <li><a href="https://www.w3schools.com/jsref/jsref_obj_regexp.asp">W3 schools regular expressions
-                    reference</a></li>
-            <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions">MDN regular
-                    expressions reference</a></li>
-            <li><a href="http://regexr.com/">Testing your regular expressions</a></li>
-        </ul>
-        <center><img src="https://lilgreenland.github.io/images/BMO.jpg" align="middle"></center>
-    </div>
-
--->
