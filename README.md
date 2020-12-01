@@ -76,11 +76,27 @@ Firebase hosting files:
 
 ## References
 
-Images:
+# Images:
 
+All but for 2 pictures used were obtained from attribution-free sources. 
 
-Libraries:
+The two exceptions are the BCIT-logo.png and education.jpg which were used
+due to our projects adjacency to the British Columbia Institute of 
+Technology since we are currently enrolled a program at the institute. 
 
+These images were found on https://www.bcit.ca and are used with the 
+understanding that our project is related to the school and it's students.
 
-Open-source projects:
+# Libraries:
 
+Bootstrap -> Used various Bootsrap componenets
+https://getbootstrap.com/
+
+Firebase -> Used firebase to register and store data (technically in firestore).
+
+# Open-source projects:
+
+Initally started using the chatbot created by Landgreen as a template
+https://codepen.io/lilgreenland/pen/pyVvqB 
+
+However, have significantly changed a vast majority of the code and functionality to suit our specific project.

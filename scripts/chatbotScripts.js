@@ -149,7 +149,7 @@ function newEntry() {
     botMessage.className = "chatlog";
     var chatMessage = document.getElementById("chatbox").value.toLowerCase();
 
-    if (chatMessage != "" && chatMessage != "most liked" && chatMessage != "top searches" && chatMessage != "my campus") {
+    if (chatMessage != "" && !chatMessage.includes("most liked")  && !chatMessage.includes("top searches") && !chatMessage.includes("my campus")) {
 
         lastUserMessage = document.getElementById("chatbox").value;
         document.getElementById("chatbox").value = "";
@@ -168,15 +168,15 @@ function newEntry() {
 
         chatBox.scrollTop = chatBox.scrollHeight - chatBox.clientHeight;
 
-    } else if (chatMessage == "most liked") {
+    } else if (chatMessage.includes("most liked")) {
 
         mostLiked();
 
-    } else if (chatMessage == "top searches") {
+    } else if (chatMessage.includes("top searches")) {
 
         topSearches();
 
-    } else if (chatMessage == "my campus") {
+    } else if (chatMessage.includes("my campus")) {
 
         campusPreference();
 
