@@ -41,13 +41,13 @@
 
 #description{
     color:black;
-    font-size: 14pt;
+    font-size: 15pt;
     font-weight: 400;
 }
 
 #subtext{
     color:black;
-    font-size: 10pt;
+    font-size: 13pt;
     font-weight: 200;
 }
 .btn1{
@@ -100,11 +100,11 @@
 
 @media screen and (max-width: 700px) {
     #title{
-        font-size: 20pt;
+        font-size: 24pt;
     }
 
     #description{
-        font-size: 12pt;
+        font-size: 15pt;
     }
 
     #icon{

@@ -141,3 +141,186 @@
         opacity: 1;
     }
 }
+@media screen and (max-width: 1250px) {
+    #Title{
+        font-size: 40pt;
+    }
+    #p1{
+        font-size: 14pt;
+        margin: 0 30px 0 30px;
+    }
+    #head1{
+        font-size: 25pt;
+    }
+    #p2{
+        font-size: 14pt;
+    }
+    #cardholders {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+    }
+    
+    .container-holder{
+        height: 100vh;
+        display: flex;
+        flex-wrap: wrap;
+        
+    }
+    .container1{
+        height: 100vh;
+    }
+
+    #card1{
+       margin: 0;
+        
+    }
+    #box1{
+        line-height: 1;
+        padding-right: 0;
+        
+    }
+    #p4{
+        font-size: 14pt;
+    }
+
+    .btn2 {
+        font-size: 14pt;
+    }
+    #box{
+        width: 65vw;
+        
+    }
+
+    .card-img-top {
+        height: 40px;
+        width: 40px;
+    }
+    .card-text{
+        font-size: 12pt;
+    }
+
+}
+@media screen and (max-width: 800px) {
+   
+    #Title{
+        font-size: 40pt;
+    }
+    #p1{
+        font-size: 14pt;
+        margin: 0 30px 0 30px;
+    }
+    #head1{
+        font-size: 25pt;
+    }
+    #p2{
+        font-size: 14pt;
+    }
+    #cardholders {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+    }
+    
+    .container-holder{
+        height: 100vh;
+        display: flex;
+        flex-wrap: wrap;
+        
+    }
+    .container1{
+        height: 100vh;
+    }
+
+    #card1{
+       margin: 0;
+        
+    }
+    #box1{
+        line-height: 1;
+        padding-right: 0;
+        
+    }
+    #p4{
+        font-size: 14pt;
+    }
+
+    .btn2 {
+        font-size: 14pt;
+    }
+    #box{
+        width: 65vw;
+        
+    }
+
+    .card-img-top {
+        height: 40px;
+        width: 40px;
+    }
+    .card-text{
+        font-size: 12pt;
+    }
+
+}
+@media screen and (max-width: 450px) {
+    #Title{
+        font-size: 30pt;
+    }
+    #p1{
+        font-size: 12pt;
+        margin: 0 20px 0 20px;
+    }
+    #head1{
+        font-size: 20pt;
+    }
+    #p2{
+        font-size: 12pt;
+    }
+    #cardholders {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+    }
+    
+    .container1{
+        height: 800px;
+    }
+
+    #card1{
+       margin: 0;
+        
+    }
+    #box1{
+        line-height: 1;
+        padding-right: 20px;
+        
+    }
+    #p4{
+        font-size: 12pt;
+    }
+
+    .btn2 {
+        font-size: 12pt;
+    }
+
+    #box{
+        width: 275px;
+        padding: 0 20px 0 0;
+        
+    }
+    .container2{
+        display: flex;
+        justify-content: center;
+    }
+
+    .card-img-top {
+        height: 40px;
+        width: 40px;
+    }
+    .card-text{
+        font-size: 10pt;
+    }
+}
