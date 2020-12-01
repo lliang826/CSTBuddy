@@ -35,6 +35,16 @@
     font-family: 'Crimson Text', serif;
 }
 
+#welcomeSmallScreen {
+    display: none;
+    font-size: 3em;
+    height: 220px;
+    color: black;
+    margin-top: 50px;
+    font-family: 'Crimson Text', serif;
+    text-align: center;
+}
+
 #education {
     height: 160px;
 }
@@ -171,7 +181,17 @@ h2 {
     #welcome { grid-area: welcome; }
     #education { grid-area: education; }
 
+    #welcomeSmallScreen {
+        display: block;
+        font-size: 2.2em;
+        width: 90%;
+        height: 0px;
+        margin: auto;
+    }
 
+    #welcome {
+        display: none;
+    }
     
     #logo-div {
         display: grid;
@@ -202,17 +222,120 @@ h2 {
 }
 
 @media screen and (max-width: 750px) {
+    #welcomeSmallScreen {
+        display: block;
+        font-size: 2.2em;
+        width: 90%;
+        height: 0px;
+        margin: auto;
+    }
+
+    #welcome {
+        display: none;
+    }
+
     #logo-div {
         grid-template-columns: 20% 32% 1%;
     }
 }
 
 @media screen and (max-width: 600px) {
+
+    #welcomeSmallScreen {
+        display: block;
+        font-size: 2.2em;
+        width: 90%;
+        height: 0px;
+        margin: auto;
+    }
+
+    #welcome {
+        display: none;
+    }
+
     #bodybox {
         width: 450px;
     }
 
     #logo-div {
         grid-template-columns: 20% 22% 1%;
+        width: 100%;
+    }
+
+    #welcome {
+        display: none;
+    }
+
+    .navbar {
+        width: 100%;
+    }
+
+    #logo-div p {
+        text-align: center;
+    }
+
+    #collapse {
+        margin-left: 0;
+    }
+
+    #collapse .btn {
+        margin-left: 50%;
+        margin-right: 0;
+        width: 100%;
+    }
+
+    #collapseExample {
+        width: 100vw;
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #welcomeSmallScreen {
+        display: block;
+        font-size: 2.2em;
+        width: 90%;
+        height: 0px;
+        margin: auto;
+    }
+
+    #education {
+        display: none;
+    }
+
+    #logo-div {
+        grid-template-columns: 20% 80%;
+        width: 100%;
+    }
+
+    .navbar {
+        width: 100%;
+    }
+
+    #logo-div p {
+        text-align: center;
+    }
+
+    #bodybox {
+        width: 90%;
+    }
+
+    #chatborder {
+        width: 100%;
+    }
+
+    #collapse {
+        margin-left: 0;
+    }
+
+    #collapse .btn {
+        margin-left: 50%;
+        margin-right: 0;
+        width: 100%;
+    }
+
+    #collapseExample {
+        width: 100vw;
+        margin-left: 0;
     }
 }
