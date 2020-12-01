@@ -143,3 +143,54 @@
         transform:translateY(0);
     }
 }
+
+
+
+@media screen and (max-width: 380px) {
+    #title{
+        font-size: 18pt;
+    }
+
+    #description{
+        font-size: 12pt;
+    }
+
+    #icon{
+        width:80px;
+        height:65px;
+    }
+
+    #box{
+        grid-template-columns: 100%;
+        grid-template-areas: 
+        "box1";
+        padding: 2%;
+    }
+
+    .buttons{
+        height: 40px;
+        width:auto;
+        display: inline;
+    }
+
+    #subtext{
+        font-size: 12pt;
+    }
+    .btn1{
+        font-size: 10pt;
+    }
+    
+    .btn2{
+        font-size: 10pt;
+    }
+}
+
+@keyframes Slide_Up {
+    0%{
+        transform:translateY(70px);
+
+    }
+    100%{
+        transform:translateY(0);
+    }
+}
