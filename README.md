@@ -13,8 +13,8 @@ Password: test3@gmail.com
 * [References](#references)
 
 ## Team Members
-* Bryce Daynard
-* Gyephel Tenzin
+* [Bryce Daynard](https://github.com/bdaynard)
+* [Gyephel Tenzin](https://github.com/GyephelT)
 * Lawrence Liang
 
 ## General Info
