@@ -3,7 +3,7 @@
 COMP 1800 Projects 1 at BCIT
 
 The completed project is hosted on Firebase at: https://comp1800-349e8.web.app/  
-Sign-in credentials  
+Sign-in credentials:  
 Email: test3@gmail.com  
 Password: test3@gmail.com
 
@@ -92,7 +92,7 @@ due to our projects adjacency to the British Columbia Institute of
 Technology since we are currently enrolled a program at the institute. 
 
 These images were found on https://www.bcit.ca and are used with the 
-understanding that our project is related to the school and it's students.
+understanding that our project is related to the school and its students.
 
 # Libraries:
 
