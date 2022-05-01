@@ -75,7 +75,7 @@ styles:
 ├── mainpage.css             # CSS for the mainpage.html.  
 └── profilepage.css          # CSS for the profilepage.html.  
 
-Firebase hosting files: 
+Firebase hosting files:  
 ├── .firebaserc  
 ├── firebase.json  
 ├── firestore.indexes.json  
