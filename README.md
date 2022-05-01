@@ -2,7 +2,7 @@
 
 COMP 1800 Projects 1 at BCIT
 
-The completed project is hosted on Firebase at: https://comp1800-349e8.web.app/
+The completed project is hosted on Firebase at: https://comp1800-349e8.web.app/  
 Sign-in credentials  
 Email: test3@gmail.com  
 Password: test3@gmail.com
@@ -34,7 +34,7 @@ Technologies used for this project:
 ## Content
 Content of the project folder:
 
-Top level of project folder: 
+Top level of project folder:  
 ├── .vscode folder
 ├── images
 ├── scripts
@@ -50,10 +50,10 @@ Top level of project folder:
 
 Sub-folders and their files:
 
-.vscode:
+.vscode:  
 └── settings.json            # contains liveServer information.
 
-images:
+images:  
 ├── BCIT-logo.png            # from https://www.bcit.ca (see reference below)
 ├── Chatbot-icon.png         # index.html page chatbot picture
 ├── chatbot.svg              # chatbot icon used on homepage.html
@@ -62,13 +62,13 @@ images:
 ├── search.svg               # magnifying glass icon used on learnmore.html
 └── thumbsup.svg             # thumbs up icon used on learnmore.html
 
-scripts:
+scripts:  
 ├── chatbotScripts.js        # Javascript, JQuery, and firebase code for manipulation of the chatbot
 ├── firebase_api.js          # firebase api key to connect to our database
 ├── login.js                 # Javascript & firebase code for the mainpage.html which allows the user to login.
 └── profileScript.js         # Javascript, JQuery, and firebase code for the profile page which allows users to personalize their profile.
 
-styles: 
+styles:  
 ├── homepage.css             # CSS for the homepage.html.
 ├── index.css                # CSS for the index.html page.
 ├── learnmore.css            # CSS for the learnmore.html page.
