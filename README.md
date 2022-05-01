@@ -1,5 +1,12 @@
 # COMP_1800_Team07
 
+COMP 1800 Projects 1 at BCIT
+
+The completed project is hosted on Firebase at: https://comp1800-349e8.web.app/
+Sign-in credentials  
+Email: test3@gmail.com  
+Password: test3@gmail.com
+
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Contents](#content)
@@ -99,4 +106,4 @@ Firebase -> Used firebase to register and store data (technically in firestore).
 Initally started using the chatbot created by Landgreen as a template
 https://codepen.io/lilgreenland/pen/pyVvqB 
 
-However, have significantly changed a vast majority of the code and functionality to suit our specific project.
+However, we have significantly changed a vast majority of the code and functionality to suit our specific project.
