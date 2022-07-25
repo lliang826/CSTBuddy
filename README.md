@@ -2,7 +2,8 @@
 
 COMP 1800 Projects 1 at BCIT
 
-The completed project is hosted on Firebase at: https://comp1800-349e8.web.app/  
+Try out the completed project at: https://comp1800-349e8.web.app/!
+
 Sign-in credentials:  
 Email: test3@gmail.com  
 Password: test3@gmail.com
